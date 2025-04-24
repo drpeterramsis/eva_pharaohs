@@ -17,6 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize menu buttons with new tab functionality
     function initializeMenuButtons() {
         const buttons = document.querySelectorAll('.menu button');
+        // Add this to your initializeMenuButtons() function
+const imageButton = document.querySelector('.image-button');
+if (imageButton) {
+    imageButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.open('leaders.html', '_blank', 'noopener,noreferrer');
+    });
+}
         
         buttons.forEach(button => {
             button.addEventListener('click', function(e) {
@@ -84,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 500);
                 
             }, 1000);
-        }, 1500);
+        }, 1000);
     });
     
     // Parallax effect for background
@@ -102,3 +110,23 @@ document.addEventListener('DOMContentLoaded', function() {
         background.style.transform = 'scale(1.1)';
     });
 });
+
+// Add this to eva.js for better button feedback
+function handleButtonClick(button) {
+    button.classList.add('button-clicked');
+    setTimeout(() => {
+        button.classList.remove('button-clicked');
+        
+        const pageMap = {
+            'Schedule': 'schedule.html',
+            'Rooming List': 'rooming.html',
+            'Teams': 'directions.html',
+            'Assessment': 'assessment.html'
+        };
+        
+        const buttonText = button.textContent.trim();
+        if (pageMap[buttonText]) {
+            window.open(pageMap[buttonText], '_blank', 'noopener,noreferrer');
+        }
+    }, 300);
+}
