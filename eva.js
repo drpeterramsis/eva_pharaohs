@@ -1,6 +1,5 @@
-// Enhanced JavaScript with security features and animations
 document.addEventListener('DOMContentLoaded', function() {
-    // Disable right-click and inspect
+    // Security: Disable right-click and inspect
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
     });
@@ -15,32 +14,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Create particles
-    function createParticles() {
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = window.innerWidth < 768 ? 30 : 50;
+    // Initialize menu buttons with new tab functionality
+    function initializeMenuButtons() {
+        const buttons = document.querySelectorAll('.menu button');
         
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            
-            // Random properties
-            const size = Math.random() * 5 + 2;
-            const posX = Math.random() * window.innerWidth;
-            const posY = Math.random() * window.innerHeight;
-            const opacity = Math.random() * 0.5 + 0.3;
-            const duration = Math.random() * 20 + 10;
-            const delay = Math.random() * 5;
-            
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${posX}px`;
-            particle.style.top = `${posY}px`;
-            particle.style.opacity = opacity;
-            particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
-            
-            particlesContainer.appendChild(particle);
-        }
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Add visual feedback
+                button.classList.add('button-clicked');
+                setTimeout(() => {
+                    button.classList.remove('button-clicked');
+                }, 300);
+                
+                // Define target URLs
+                const targetUrls = {
+                    'Schedule': 'schedule.html',
+                    'Rooming List': 'rooming.html',
+                    'Road to Hotel': 'directions.html',
+                    'Assessment': 'assessment.html'
+                };
+                
+                const buttonText = button.textContent.trim();
+                if (targetUrls[buttonText]) {
+                    // Open in new tab with security features
+                    const newWindow = window.open(targetUrls[buttonText], '_blank');
+                    
+                    // Prevent potential security issues
+                    if (newWindow) {
+                        newWindow.opener = null;
+                    } else {
+                        // Fallback if popup is blocked
+                        alert('Please allow popups for this site to open in new tab');
+                    }
+                }
+            });
+        });
     }
     
     // Hide loader after everything is loaded
@@ -58,9 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     const splashContent = document.querySelector('.content');
                     splashContent.classList.add('fade-out');
                     
-                    // Create particles after loader is hidden
-                    createParticles();
-                    
                     // After fade-out finishes, show banner
                     setTimeout(() => {
                         const splash = document.querySelector('.splash');
@@ -70,13 +77,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         // After the banner is shown, show menu
                         setTimeout(() => {
                             splash.classList.add('show-menu');
+                            initializeMenuButtons();
                         }, 1000);
                         
                     }, 1000);
-                }, 500); // Short delay after loader hides
+                }, 500);
                 
-            }, 1000); // Match the fade-out duration
-        }, 1500); // Minimum loader display time
+            }, 1000);
+        }, 1500);
     });
     
     // Parallax effect for background
