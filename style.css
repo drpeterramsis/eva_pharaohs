@@ -1,72 +1,90 @@
 @font-face {
     font-family: 'HN';
     src: url('assets/hn.otf') format('opentype');
-  }
-  
-  @font-face {
+}
+
+@font-face {
     font-family: 'Hieroglyphs';
     src: url('assets/hieroglyphs.ttf') format('truetype');
-  }
-  
-  * {
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  html, body {
+}
+
+html, body {
     height: 100%;
     font-family: 'HN', sans-serif;
     background-color: #000;
-  }
-  
-  .splash {
+}
+
+.splash {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-  }
-  
-  /* Background Image */
-  .background {
+}
+
+/* Background Image */
+.background {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: 0;
-  }
-  
-  /* White opacity overlay */
-  .overlay {
+}
+
+/* White opacity overlay */
+.overlay {
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.7);
     z-index: 1;
-  }
-  
-  /* Vertical Hieroglyph Titles */
-  .hiero-line {
+}
+
+/* Banner Styles */
+.banner {
     position: absolute;
-    font-family: 'Hieroglyphs';
-    font-size: 2rem;
-    font-weight: bold;
-    color: #967969	;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
+    top: 0;
+    width: 100%;
     z-index: 3;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .hiero-line.left {
-    left: 10px;
-  }
-  
-  .hiero-line.right {
-    right: 10px;
-  }
-  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+    height:7.5rem;
+}
+
+.banner .pharaoh {
+    width:6.0rem;
+    max-width: 100%;
+}
+
+.banner .logo {
+    width: 6.0rem;
+    max-width: 80%;
+}
+
+.banner .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.splash.show-banner .banner {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+ 
   /* Content */
   .content {
     position: relative;
@@ -99,18 +117,121 @@
     font-weight: bold;
     letter-spacing: 1px;
   }
-  
-  @media (max-width: ) {
-    .title {
-      font-size: 2rem;
-    }
-  
-    .pharaoh {
-      width: 120px;
-    }
-  
-    .logo {
-      width: 100px;
-    }
+
+/* Menu Styles */
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 7.0rem;
+    font-family: 'HN';
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
+.menu button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu button:hover {
+    background-color: #444;
+}
+
+.splash.show-menu .menu {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+ /* Vertical Hieroglyph Titles */
+ .hiero-line {
+    position: absolute;
+    font-family: 'Hieroglyphs';
+    font-size: 2rem;
+    font-weight: bold;
+    color: #967969	;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    z-index: 3;
+    top: 55%;
+    transform: translateY(-50%);
   }
   
+  .hiero-line.left {
+    left: 10px;
+  }
+  
+  .hiero-line.right {
+    right: 10px;
+  }
+
+  /* Add this to your CSS */
+.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .banner .title {
+        font-size: 5vw;
+    }
+
+
+
+    .logo {
+        width: 30vw;
+    }
+
+    .title {
+        font-size: 6vw;
+    }
+
+    .menu button {
+        padding: 2vh 5vw;
+        font-size: 4vw;
+    }
+
+
+
+@media (max-width: 480px) {
+    .banner .title {
+        font-size: 7vw;
+    }
+    .banner .logo {
+        width: 20vw;
+    }
+    .pharaoh {
+        width: 80vw;
+    }
+
+    .logo {
+        width: 30vw;
+    }
+
+    .title {
+        font-size: 10vw;
+    }
+
+    .menu button {
+        padding: 3vh 6vw;
+        font-size: 5vw;
+    }
+
+
+}
+}
