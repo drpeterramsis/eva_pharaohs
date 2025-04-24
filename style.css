@@ -132,6 +132,11 @@ html, body {
     pointer-events: auto;
 }
 
+.splash.show-hiero-line .hiero-line {
+    opacity: 1;
+
+}
+
 /* Enhanced Content Section */
 .content {
     position: relative;
@@ -250,7 +255,7 @@ html, body {
 .hiero-line {
     position: absolute;
     font-family: 'Hieroglyphs';
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: #967969;
     writing-mode: vertical-rl;
@@ -261,6 +266,7 @@ html, body {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     opacity: 0.8;
     transition: all 0.5s ease;
+    opacity:0;
 }
 
 .hiero-line.left {
@@ -363,6 +369,7 @@ html, body {
         padding: 15px;
         height: 6rem;
     }
+
     
     .banner .title {
         font-size: 1.3rem;
@@ -401,6 +408,7 @@ html, body {
         padding: 10px;
         height: 5rem;
     }
+
     
     .banner .title {
         font-size: 1rem;
