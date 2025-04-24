@@ -4,8 +4,8 @@
     "description": "EVA Pharma 2025 Annual Meeting",
    "start_url": "https://drpeterramsis.github.io/eva_pharaohs/",
     "display": "standalone",
-    "background_color": "#ffc404",
-    "theme_color": "#ffc404",
+    "background_color": "#ffffff ",
+    "theme_color": "#ffffff ",
     "icons": [
         {
             "src": "icon-192x192.png",
