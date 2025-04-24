@@ -1,0 +1,116 @@
+@font-face {
+    font-family: 'HN';
+    src: url('assets/hn.otf') format('opentype');
+  }
+  
+  @font-face {
+    font-family: 'Hieroglyphs';
+    src: url('assets/hieroglyphs.ttf') format('truetype');
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: 'HN', sans-serif;
+    background-color: #000;
+  }
+  
+  .splash {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* Background Image */
+  .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  
+  /* White opacity overlay */
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 1;
+  }
+  
+  /* Vertical Hieroglyph Titles */
+  .hiero-line {
+    position: absolute;
+    font-family: 'Hieroglyphs';
+    font-size: 2rem;
+    font-weight: bold;
+    color: #967969	;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    z-index: 3;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .hiero-line.left {
+    left: 10px;
+  }
+  
+  .hiero-line.right {
+    right: 10px;
+  }
+  
+  /* Content */
+  .content {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: black;
+    padding: 20px;
+    text-shadow: none;
+  }
+  
+  .pharaoh {
+    width: 25.0rem;   
+     max-width:25rem;
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    width: 120px;
+    max-width: 80%;
+    margin-bottom: 10px;
+  }
+  
+  .title {
+    font-size: 2.0rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  @media (max-width: ) {
+    .title {
+      font-size: 2rem;
+    }
+  
+    .pharaoh {
+      width: 120px;
+    }
+  
+    .logo {
+      width: 100px;
+    }
+  }
+  
