@@ -1,0 +1,21 @@
+{
+    "name": "EVA Pharaohs",
+    "short_name": "EVA Pharaohs",
+    "description": "EVA Pharma 2025 Annual Meeting",
+   "start_url": "https://drpeterramsis.github.io/eva_pharaohs/",
+    "display": "standalone",
+    "background_color": "#ffc404",
+    "theme_color": "#ffc404",
+    "icons": [
+        {
+            "src": "icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
