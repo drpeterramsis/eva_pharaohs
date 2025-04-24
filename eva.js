@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(() => {
                         const splash = document.querySelector('.splash');
                         splash.classList.add('show-banner');
+                        splash.classList.add('show-hiero-line');
                         
                         // After the banner is shown, show menu
                         setTimeout(() => {
