@@ -120,7 +120,7 @@ function handleButtonClick(button) {
         const pageMap = {
             'Schedule': 'schedule.html',
             'Rooming List': 'rooming.html',
-            'Teams': 'directions.html',
+            'Teams': 'teams.html',
             'Assessment': 'assessment.html'
         };
         
