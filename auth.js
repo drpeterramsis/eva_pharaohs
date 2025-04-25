@@ -189,7 +189,7 @@ function initializeMenuButtons() {
             }, 300);
             
             const targetUrls = {
-                'Teams': 'teams.html'
+                'My Team': 'teams.html'
             };
             
             const buttonText = button.textContent.trim();
