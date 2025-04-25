@@ -19,6 +19,14 @@
             <h1 class="title">Teams</h1>
         </div>
 
+        <!-- User Info -->
+        <div class="user-info-container" style="opacity: 1; pointer-events: auto;">
+            <div class="user-info">
+                <span class="welcome-message" id="welcomeMessage"></span>
+                <span class="user-team" id="userTeam"></span>
+            </div>
+        </div>
+
         <!-- Hieroglyphs -->
         <div class="hiero-line left" style="opacity: 0.8;">𓇋𓆑𓄿𓆑𓄿𓂋𓄿𓅱𓉔𓋴</div>
         <div class="hiero-line right" style="opacity: 0.8;">𓇋𓆑𓄿𓆑𓄿𓂋𓄿𓅱𓉔𓋴</div>
@@ -30,47 +38,21 @@
 
         <!-- Teams Content -->
         <div class="menu-container">
-        <div class="submenu">
-            <!-- Strategic Leaders Button -->
-            <button class="sub_button">
-                <img src="assets/strategic_leaders_btn.png" class="btn-icon" alt="">
-            </button>
-            
-            <!-- Other buttons following same structure -->
-            <button class="sub_button">
-                <img src="assets/builders_btn.png" class="btn-icon" alt="">
-            </button>
-            
-            <button class="sub_button">
-                <img src="assets/workers_btn.png" class="btn-icon" alt="">
-          
-           
-            <button class="sub_button">
-                <img src="assets/riddles_solvers_btn.png" class="btn-icon" alt="">
-            
-            </button>
-        </button>
-        <button class="sub_button">
-            <img src="assets/farmers_btn.png" class="btn-icon" alt="">
-            
-        </button>
-            
+            <div class="team-display">
+                <img id="teamImage" src="" alt="Team Image" class="team-image">
+                <div class="team-notes">
+                    <h2 id="teamTitle"></h2>
+                    <ul id="teamNotesList"></ul>
+                </div>
             </div>
         </div>
 
-<!-- Team Notes Modal -->
-<div class="modal-overlay" id="teamModal" style="display: none;">
-    <div class="modal-content">
-        <button class="close-modal">&times;</button>
-        <div class="modal-body">
-            <h2 id="modalTitle">Team Notes</h2>
-            <ul id="modalNotes"></ul>
-        </div>
+        <!-- Footer -->
+        <footer class="app-footer" style="opacity: 1; pointer-events: auto;">
+            <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
+        </footer>
     </div>
-</div>
-
-
-    </div>
+    <script src="teams.js"></script>
     <script src="eva.js"></script>
 </body>
 </html>

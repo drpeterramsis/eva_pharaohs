@@ -1,153 +1,239 @@
-// auth.js
+// auth-offline.js - Works 100% offline with local files
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if user is already logged in
-    const userData = getStoredUserData();
-    if (userData) {
-        showMainContent();
-        return;
-    }
-    showLoginScreen();
+    console.log('DOM fully loaded - Offline Mode');
+    initializeAuthSystem();
 });
 
-function getStoredUserData() {
-    const userData = localStorage.getItem('userData');
-    return userData ? JSON.parse(userData) : null;
+// Hardcoded member data (replace with your actual members)
+const LOCAL_MEMBERS_DATA = [
+    {
+        "Name": "Peter Ramsis Tawfeek",
+        "Email": "peter.tawfik@evapharma.com",
+        "Code": 4639,
+        "Team": "Builders"
+    },
+    {
+        "Name": "Maro Peter Ramsis",
+        "Email": "dr.peter.salib@gmail.com",
+        "Code": 1234,
+        "Team": "Strategic Leaders"
+    },
+    {
+        "Name": "Fiby Magdy Ibrahem",
+        "Email": "fabulla86@gmail.com",
+        "Code": 7896,
+        "Team": "Workers"
+    },
+    {
+        "Name": "Bassem Rafaat Nagiub",
+        "Email": "basem.nagiub@evapharma.com",
+        "Code": 8524,
+        "Team": "Workers"
+    },
+    {
+        "Name": "Guest",
+        "Email": "guest@evapharma.com",
+        "Code": 1001,
+        "Team": "Workers"
+    }
+];
+
+function initializeAuthSystem() {
+    // Check for existing session
+    const userData = safelyGetUserData();
+    
+    if (userData) {
+        console.log('User already logged in:', userData.email);
+        showMainContent();
+    } else {
+        console.log('No active session found');
+        showLoginScreen();
+    }
+}
+
+function safelyGetUserData() {
+    try {
+        const userData = localStorage.getItem('userData');
+        if (!userData) return null;
+        
+        const parsedData = JSON.parse(userData);
+        
+        // Validate stored data structure
+        if (!parsedData.email || !parsedData.team || !parsedData.name) {
+            console.warn('Invalid user data structure', parsedData);
+            localStorage.removeItem('userData');
+            return null;
+        }
+        
+        return parsedData;
+    } catch (e) {
+        console.error('Error reading user data:', e);
+        return null;
+    }
 }
 
 function showLoginScreen() {
-    // Clear any existing main content
-    document.querySelector('.user-info-container')?.remove();
-    document.querySelector('.app-footer')?.remove();
+    console.log('Displaying login screen');
     
-    // Reset splash classes
+    // Clear any existing UI
+    removeElement('.login-container');
+    removeElement('.user-info-container');
+    removeElement('.app-footer');
+    
+    // Reset visual states
     const splash = document.querySelector('.splash');
     if (splash) {
         splash.classList.remove(
-            'show-banner', 'show-hiero-line', 'show-user-info', 'show-menu', 'show-footer'
+            'show-banner', 'show-hiero-line', 'show-user-info', 
+            'show-menu', 'show-footer'
         );
     }
     
-    // Reset content state
-    const content = document.querySelector('.content');
-    if (content) content.classList.remove('fade-out');
-    
-    // Create login container
-    const loginContainer = document.createElement('div');
-    loginContainer.className = 'login-container';
-    loginContainer.innerHTML = `
-        <div class="login-box">
-            <h2>Login</h2>
-            <div class="input-group">
-                <input type="email" id="emailInput" placeholder="Enter your email" required>
+    // Create fresh login UI
+    const loginHTML = `
+        <div class="login-container">
+            <div class="login-box">
+                <h2>Login</h2>
+                <div class="input-group">
+                    <input type="email" id="emailInput" 
+                           placeholder="Enter your email" 
+                           required
+                           autocomplete="email">
+                </div>
+                <button id="signInBtn" class="login-button">Sign In</button>
+                <p id="errorMsg" class="error-message"></p>
             </div>
-            <button id="signInBtn">Sign In</button>
-            <p id="errorMsg" class="error-message"></p>
         </div>
     `;
-    document.querySelector('.splash').appendChild(loginContainer);
-
-    // Add event listeners
+    
+    document.querySelector('.splash').insertAdjacentHTML('beforeend', loginHTML);
+    
+    // Set up event listeners
     document.getElementById('signInBtn').addEventListener('click', handleLogin);
     document.getElementById('emailInput').addEventListener('keypress', function(e) {
         if (e.key === 'Enter') handleLogin();
     });
     
-    // Focus email input
     document.getElementById('emailInput').focus();
 }
 
-async function handleLogin() {
+function handleLogin() {
+    console.log('Login initiated (offline mode)');
+    
     const emailInput = document.getElementById('emailInput');
     const errorMsg = document.getElementById('errorMsg');
     const email = emailInput.value.trim();
-
+    errorMsg.textContent = '';
+    
+    // Validate email format
     if (!email) {
-        errorMsg.textContent = 'Please enter your email';
+        showError(errorMsg, 'Please enter your email');
         return;
     }
-
+    
+    if (!isValidEmail(email)) {
+        showError(errorMsg, 'Please enter a valid email address');
+        return;
+    }
+    
     try {
-        // Load members data
-        const response = await fetch('members.json');
-        if (!response.ok) throw new Error('Failed to load members data');
-        const members = await response.json();
-
-        // Find user by email
-        const user = members.find(member => member.Email.toLowerCase() === email.toLowerCase());
+        console.log('Authenticating against local data');
+        
+        // Use the hardcoded member data
+        const user = LOCAL_MEMBERS_DATA.find(member => 
+            member.Email && member.Email.toLowerCase() === email.toLowerCase()
+        );
         
         if (!user) {
-            errorMsg.textContent = 'User not found';
+            showError(errorMsg, 'User not found. Please check your email.');
             return;
         }
-
-        // Save user data to localStorage
-        storeUserData({
+        
+        // Store session
+        localStorage.setItem('userData', JSON.stringify({
             name: user.Name,
             email: user.Email,
             team: user.Team,
             code: user.Code
-        });
-
-        // Show main content
+        }));
+        
+        // Proceed to main content
         showMainContent();
+        
     } catch (error) {
-        console.error('Login error:', error);
-        errorMsg.textContent = 'An error occurred. Please try again.';
+        console.error('Authentication failed:', error);
+        showError(errorMsg, 'Login error. Please try again.');
     }
 }
 
-function storeUserData(userData) {
-    localStorage.setItem('userData', JSON.stringify(userData));
-}
-
 function showMainContent() {
-    // Remove login container if it exists
-    document.querySelector('.login-container')?.remove();
-
-    // Get user data
-    const userData = getStoredUserData();
+    console.log('Displaying main content');
+    
+    removeElement('.login-container');
+    
+    const userData = safelyGetUserData();
     if (!userData) {
         showLoginScreen();
         return;
     }
     
-    // Create user info display below banner
-    const userInfoContainer = document.createElement('div');
-    userInfoContainer.className = 'user-info-container';
-    userInfoContainer.innerHTML = `
-        <div class="user-info">
-            <span class="welcome-message">Welcome, ${userData.name}</span>
-            <span class="user-team">Team: ${userData.team}</span>
+    // Create user info display
+    const userInfoHTML = `
+        <div class="user-info-container">
+            <div class="user-info">
+                <span class="welcome-message">Welcome, ${userData.name}</span>
+                <span class="user-team">Team: ${userData.team}</span>
+            </div>
         </div>
     `;
-    document.querySelector('.splash').appendChild(userInfoContainer);
-
-    // Create footer with sign out button
-    const footer = document.createElement('footer');
-    footer.className = 'app-footer';
-    footer.innerHTML = `
-        <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
-    `;
-    document.querySelector('.splash').appendChild(footer);
     
-    // Add event listener for sign out
+    // Create footer
+    const footerHTML = `
+        <footer class="app-footer">
+            <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
+        </footer>
+    `;
+    
+    document.querySelector('.splash').insertAdjacentHTML('beforeend', userInfoHTML);
+    document.querySelector('.splash').insertAdjacentHTML('beforeend', footerHTML);
+    
+    // Set up sign out
     document.getElementById('signOutBtn').addEventListener('click', handleSignOut);
+    
+    // Animate transition
+    animateContentTransition();
+}
 
-    // Continue with the original content display
+function handleSignOut() {
+    console.log('User signing out');
+    localStorage.removeItem('userData');
+    showLoginScreen();
+}
+
+// Helper functions
+function removeElement(selector) {
+    const element = document.querySelector(selector);
+    if (element) element.remove();
+}
+
+function showError(element, message) {
+    element.textContent = message;
+    element.style.display = 'block';
+}
+
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function animateContentTransition() {
     const loader = document.querySelector('.loader');
     if (loader) {
         loader.classList.add('fade-out');
-        
         setTimeout(() => {
             loader.style.display = 'none';
-            animateMainContent();
         }, 1000);
-    } else {
-        animateMainContent();
     }
-}
-
-function animateMainContent() {
+    
     setTimeout(() => {
         const splashContent = document.querySelector('.content');
         if (splashContent) splashContent.classList.add('fade-out');
@@ -169,14 +255,6 @@ function animateMainContent() {
     }, 500);
 }
 
-function handleSignOut() {
-    // Clear all user data
-    localStorage.removeItem('userData');
-    
-    // Show login screen again
-    showLoginScreen();
-}
-
 function initializeMenuButtons() {
     const buttons = document.querySelectorAll('.menu button');
     buttons.forEach(button => {
@@ -194,12 +272,7 @@ function initializeMenuButtons() {
             
             const buttonText = button.textContent.trim();
             if (targetUrls[buttonText]) {
-                const newWindow = window.open(targetUrls[buttonText], '_blank');
-                if (newWindow) {
-                    newWindow.opener = null;
-                } else {
-                    alert('Please allow popups for this site to open in new tab');
-                }
+                window.location.href = targetUrls[buttonText];
             }
         });
     });

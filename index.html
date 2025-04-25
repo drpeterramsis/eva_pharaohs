@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EVA Pharaohs</title>
+
+    <!-- PWA Manifest and Theme -->
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css" />
     <meta name="theme-color" content="#000000">
+
+    <!-- Open Graph Meta Tags -->
     <meta property="og:image" content="https://drpeterramsis.github.io/eva_pharaohs/icon-512x512.png" />
     <meta property="og:image:alt" content="EVA Pharaohs" />
     <meta property="og:image:type" content="image/png" />
@@ -14,6 +17,9 @@
     <meta property="og:image:height" content="512" />
     <meta property="og:title" content="EVA Pharaohs" />
     <meta property="og:description" content="EVA Pharma 2025 Annual Meeting" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <!-- Loading Screen -->
@@ -22,18 +28,19 @@
         <div class="loader-text">Loading<br>EVA Pharaohs</div>
     </div>
 
+    <!-- Splash Screen -->
     <div class="splash">
         <img src="assets/pyramid_back.webp" class="background" alt="Pyramid Background" />
         <div class="overlay"></div>
-        
-        <!-- Banner with the logo, pharaoh image, and title -->
+
+        <!-- Banner -->
         <div class="banner">
             <img src="assets/phar_char.webp" class="pharaoh" alt="Pharaoh" />
             <img src="assets/eva.webp" class="logo" alt="EVA Logo" />
             <h1 class="title">Pharaohs</h1>
         </div>
 
-        <!-- Vertical Hieroglyph Lines -->
+        <!-- Hieroglyph Lines -->
         <div class="hiero-line left">𓇋𓆑𓄿𓆑𓄿𓂋𓄿𓅱𓉔𓋴</div>
         <div class="hiero-line right">𓇋𓆑𓄿𓆑𓄿𓂋𓄿𓅱𓉔𓋴</div>
 
@@ -43,12 +50,14 @@
             <img src="assets/eva.webp" class="logo" alt="EVA Logo" />
             <h1 class="title">Pharaohs</h1>
         </div>
-       
+
         <!-- Navigation Menu -->
         <div class="menu">
-            <button>My Team<span class="new-tab-icon"></span></button>
+            <button onclick="openMyTeam()">My Team<span class="new-tab-icon"></span></button>
         </div>
     </div>
+
+    <!-- Scripts -->
     <script src="auth.js"></script>
     <script src="eva.js"></script>
 </body>
