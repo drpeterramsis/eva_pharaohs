@@ -205,22 +205,6 @@ html, body {
     transition: all 1s ease;
 }
 
-.submenu {
-    display: flex;
-
-    flex-direction: column;
-    align-items: center;
-    font-family: 'HN';
-    position: absolute;
-
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-    opacity: 1;
-    pointer-events: none;
-    transition: all 1s ease;
-}
-
 .menu button {
     padding: 12px 30px;
     font-size: 1.1rem;
@@ -236,21 +220,6 @@ html, body {
     position: relative;
     overflow: hidden;
 }
-
-.submenu button {
-    border: none;
-    background-color: transparent;
-    color: black;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 200px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-
-}
-
-
 
 .menu button::before {
     content: '';
@@ -285,13 +254,13 @@ html, body {
 .hiero-line {
     position: absolute;
     font-family: 'Hieroglyphs';
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: bold;
     color: #967969;
     writing-mode: vertical-rl;
     text-orientation: upright;
     z-index: 3;
-    top: 55%;
+    top: 53%;
     transform: translateY(-50%);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     opacity: 0.8;
@@ -361,11 +330,6 @@ html, body {
     letter-spacing: 1px;
     text-align: center;
 }
-.btn-icon{
-
-    width:15rem;
-    
-}
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1024px) {
@@ -379,11 +343,6 @@ html, body {
 
     .content .title {
         font-size: 2rem;
-    }
-
-    .menu-container {
-      
-        top: 7.0rem;
     }
 }
 
@@ -421,84 +380,151 @@ html, body {
     }
 }
 
-.menu-container {
-    position: absolute;
-    top: 8.0rem;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    overflow-y: auto;
-    z-index: 3;
-    padding: 0 20px;
-  
-    /* Hide scrollbar */
-    scrollbar-width: none;        /* Firefox */
-    -ms-overflow-style: none;     /* IE/Edge */
-  }
-  .menu-container::-webkit-scrollbar {
-    display: none;                /* Chrome, Safari */
-  }
-  
-  /* Modal Styles */
-.modal-overlay {
+/* Login Container Styles */
+.login-container {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
     backdrop-filter: blur(5px);
 }
 
-.modal-content {
+.login-box {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%);
     padding: 2rem;
     border-radius: 10px;
-    max-width: 600px;
     width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
-    position: relative;
+    max-width: 400px;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #333;
-}
-
-.modal-body h2 {
-    color: #967969;
-    margin-bottom: 1rem;
     text-align: center;
 }
 
-.modal-body ul {
-    list-style-type: none;
-    padding-left: 1rem;
-}
-
-.modal-body li {
-    margin-bottom: 0.8rem;
-    position: relative;
-    padding-left: 1.5rem;
-    line-height: 1.4;
-}
-
-.modal-body li:before {
-    content: "■";
-    position: absolute;
-    left: 0;
+.login-box h2 {
     color: #967969;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #967969;
+    box-shadow: 0 0 0 2px rgba(150, 121, 105, 0.2);
+}
+
+#signInBtn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #ffc404 0%, #ffc404 100%);
+    color: black;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+#signInBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.error-message {
+    color: #e74c3c;
+    margin-top: 0.5rem;
+    min-height: 1.2rem;
+}
+
+/* User Info Styles */
+.user-info-container {
+    position: absolute;
+    top: 7.5rem;
+    width: 100%;
+    z-index: 3;
+    text-align: center;
+    padding: 10px 0;
+    background-color:transparent;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s ease;
+}
+
+.splash.show-user-info .user-info-container {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.welcome-message {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.user-team {
+    color: #967969;
+    font-size: 0.9rem;
+}
+
+/* Footer Styles */
+.app-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 10px 0;
+    text-align: center;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s ease;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.splash.show-footer .app-footer {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#signOutBtn {
+    padding: 8px 20px;
+    background: transparent;
+    color: #333;
+    border: 1px solid #333;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#signOutBtn:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
