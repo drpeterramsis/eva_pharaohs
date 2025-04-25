@@ -22,5 +22,11 @@
       "Email": "basem.nagiub@evapharma.com",
       "Code": 8524,
       "Team": "Workers"
+    },
+    {
+      "Name": "Guest User",
+      "Email": "guest@evapharma.com",
+      "Code": 0000,
+      "Team": "Workers"
     }
    ]
