@@ -48,3 +48,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Reset scroll positions
+    window.scrollTo(0, 0);
+    const menuContainer = document.querySelector('.menu-container');
+    if (menuContainer) {
+        menuContainer.scrollTop = 0;
+    }
+});

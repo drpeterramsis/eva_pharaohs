@@ -62,7 +62,7 @@ html, body {
 
 /* Modern Banner with Glass Morphism Effect */
 .banner {
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 3;
@@ -534,27 +534,36 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    margin-top: 2rem;
+    position: relative; /* Add this */
+    z-index: 4; /* Higher than overlay's z-index */
+    margin-top: 9rem; /* Adjust based on your banner height */
+    padding: 0 20px; /* Add horizontal padding */
 }
 
 .team-image {
-    width: 300px;
-    max-width: 100%;
+    width: 50%;
+    max-width: 50%;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     margin-bottom: 2rem;
 }
-
 .team-notes {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-radius: 10px;
     padding: 20px;
-    width: 90%;
-    max-width: 600px;
+    width: 15.0rem;
+    max-height: 60vh; /* Adjust based on your needs */
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.team-notes::-webkit-scrollbar {
+    display: none;
 }
 
 .team-notes h2 {
@@ -581,18 +590,72 @@ html, body {
     left: 0;
     color: #967969;
 }
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .team-display {
-        padding: 10px;
-    }
-    
-    .team-image {
-        width: 200px;
-    }
-    
-    .team-notes {
-        padding: 15px;
-    }
+.menu-container {
+    position: absolute;
+    top: 1rem; /* Match banner height */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 20px;
+    z-index: 2;
 }
+
+/* Hide scrollbar for Chrome/Safari */
+.menu-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Adjust team-display to not need its own margins */
+.team-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem; /* Space at bottom */
+}
+
+/* All Teams Page Styles */
+.all-teams-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.team-card {
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+
+}
+
+.team-header h2 {
+    color: #967969;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.team-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-image {
+    width: 20%;
+    max-width: 30%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.team-description {
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+}
+

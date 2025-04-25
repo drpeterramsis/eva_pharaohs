@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVA Pharaohs - All Teams</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="theme-color" content="#000000">
+</head>
+<body>
+    <div class="splash show-banner show-menu show-hiero-line">
+        <img src="assets/pyramid_back.webp" class="background" alt="Pyramid Background" />
+        <div class="overlay"></div>
+
+        <!-- Banner -->
+        <div class="banner" style="opacity: 1; pointer-events: auto;">
+            <img src="assets/phar_char.webp" class="pharaoh" alt="Pharaoh" />
+            <img src="assets/eva.webp" class="logo" alt="EVA Logo" />
+            <h1 class="title">All Teams</h1>
+        </div>
+       <!-- Hieroglyphs -->
+       <div class="hiero-line left" style="opacity: 0.8;">𓇋𓆑𓄿𓆑𓄿𓂋𓄿𓅱𓉔𓋴</div>
+       <div class="hiero-line right" style="opacity: 0.8;">𓇋𓆑𓄿𓆑𓄿𓂋𓄿𓅱𓉔𓋴</div>
+        <!-- Teams Content -->
+        <div class="menu-container">
+            <div class="all-teams-container" id="allTeamsContainer">
+                <!-- Teams will be inserted here by allteams.js -->
+            </div>
+        </div>
+    </div>
+   <!-- Add this before other scripts -->
+<script src="team-data.js"></script>
+<script src="allteams.js"></script>
+<script src="eva.js"></script>
+</body>
+</html>

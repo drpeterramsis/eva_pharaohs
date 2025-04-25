@@ -251,7 +251,7 @@ function animateContentTransition() {
                     initializeMenuButtons();
                 }, 1000);
             }
-        }, 1000);
+        }, 500);
     }, 500);
 }
 
@@ -267,12 +267,14 @@ function initializeMenuButtons() {
             }, 300);
             
             const targetUrls = {
-                'My Team': 'teams.html'
+                'My Team': 'teams.html',
+            'All Teams': 'allteams.html'
             };
             
             const buttonText = button.textContent.trim();
             if (targetUrls[buttonText]) {
-                window.location.href = targetUrls[buttonText];
+               // window.location.href = targetUrls[buttonText];
+               window.open(targetUrls[buttonText], '_blank');
             }
         });
     });
