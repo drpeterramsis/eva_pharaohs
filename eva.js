@@ -42,6 +42,9 @@ if (imageButton) {
                     'Rooming List': 'rooming.html',
                     'Road to Hotel': 'directions.html',
                     'Assessment': 'assessment.html'
+ ,'Teams': 'teams.html'
+
+
                 };
                 
                 const buttonText = button.textContent.trim();
