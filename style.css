@@ -210,11 +210,9 @@ html, body {
 
     flex-direction: column;
     align-items: center;
-    gap: 0.3rem;
-    margin-top: 7.0rem;
     font-family: 'HN';
     position: absolute;
-    top: 100px;
+
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
@@ -240,7 +238,6 @@ html, body {
 }
 
 .submenu button {
-    padding: 12px 30px;
     border: none;
     background-color: transparent;
     color: black;
@@ -250,6 +247,7 @@ html, body {
     text-align: center;
     position: relative;
     overflow: hidden;
+
 }
 
 
@@ -366,6 +364,7 @@ html, body {
 .btn-icon{
 
     width:15rem;
+    
 }
 
 /* Media Queries for Responsiveness */

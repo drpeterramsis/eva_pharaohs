@@ -40,11 +40,8 @@ if (imageButton) {
                 const targetUrls = {
                     'Schedule': 'schedule.html',
                     'Rooming List': 'rooming.html',
-                    'Road to Hotel': 'directions.html',
+                    'Teams': 'teams.html',
                     'Assessment': 'assessment.html'
- ,'Teams': 'teams.html'
-
-
                 };
                 
                 const buttonText = button.textContent.trim();
