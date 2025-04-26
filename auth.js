@@ -188,10 +188,15 @@ function showMainContent() {
     `;
     
     // Create footer
-    const footerHTML = `
-        <footer class="app-footer">
-            <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
-        </footer>
+        const footerHTML = `
+<footer class="app-footer">
+  <div class="footer-content">
+    <small>@2025 Dr. Peter Ramsis | DCC5</small>
+    <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
+  </div>
+</footer>
+
+
     `;
     
     document.querySelector('.splash').insertAdjacentHTML('beforeend', userInfoHTML);
