@@ -677,3 +677,184 @@ html, body {
 }
 
 
+/* QR Scanner Styles */
+.qr-scanner-container {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    margin: 9rem auto 2rem;
+    padding: 0 20px;
+    z-index: 4;
+    height: calc(100vh - 11rem); /* Adjust based on header/footer height */
+    overflow-y: auto;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For IE/Edge */
+}
+
+.qr-scanner-box {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-height: min-content; /* Ensure it can be smaller than container */
+    margin-bottom: 2rem; /* Space at bottom */
+
+.qr-scanner-title {
+    color: #967969;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.scanner-view {
+    width: 100%;
+    aspect-ratio: 1;
+    margin: 1rem auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+    position: relative;
+}
+
+#qr-reader {
+    width: 100%;
+    height: 100%;
+}
+
+.scanner-divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    color: #967969;
+}
+
+.scanner-divider::before,
+.scanner-divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid rgba(150, 121, 105, 0.3);
+}
+
+.scanner-divider::before {
+    margin-right: 1rem;
+}
+
+.scanner-divider::after {
+    margin-left: 1rem;
+}
+
+.manual-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.manual-input-label {
+    color: #333;
+    font-size: 1rem;
+}
+.manual-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+.manual-input-wrapper input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(150, 121, 105, 0.3);
+    border-radius: 50px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+.manual-input-wrapper input:focus {
+    outline: none;
+    border-color: #967969;
+    box-shadow: 0 0 0 2px rgba(150, 121, 105, 0.2);
+}
+
+.scanner-btn {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #ffc404 0%, #ffc404 100%);
+    color: black;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.manual-input-wrapper .scanner-btn {
+    width: 50%;
+    margin: 0.5rem auto 0;
+    padding: 0.75rem;
+}
+
+.scanner-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.scanner-btn:active {
+    transform: translateY(0);
+}
+
+.toggle-input-btn {
+    background: none;
+    border: none;
+    color: #967969;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    align-self: center;
+    margin-top: 1rem;
+}
+
+.toggle-input-btn:hover {
+    text-decoration: underline;
+}
+
+.scanner-message {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 50px;
+    display: none;
+    font-size: 0.9rem;
+}
+
+.scanner-message.error {
+    background-color: rgba(255, 71, 87, 0.1);
+    color: #e74c3c;
+    display: block;
+}
+
+.scanner-message.success {
+    background-color: rgba(46, 213, 115, 0.1);
+    color: #2ed573;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .qr-scanner-container {
+        height: calc(100vh - 9rem);
+        margin-top: 7rem;
+    }
+    .qr-scanner-box {
+        padding: 1.5rem;
+    }
+}
+    
+    .qr-scanner-title {
+        font-size: 1.5rem;
+    }
+}
+.qr-scanner-container::-webkit-scrollbar {
+    display: none;
+}

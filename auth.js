@@ -273,7 +273,8 @@ function initializeMenuButtons() {
             
             const targetUrls = {
                 'My Team': 'teams.html',
-            'All Teams': 'allteams.html'
+            'All Teams': 'allteams.html',
+            'QR Code': 'qr-scanner.html'
             };
             
             const buttonText = button.textContent.trim();

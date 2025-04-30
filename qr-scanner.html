@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVA Pharaohs - QR Scanner</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="theme-color" content="#000000">
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+<body>
+    <div class="splash show-banner show-hiero-line show-footer">
+        <img src="assets/pyramid_back.webp" class="background" alt="Pyramid Background" />
+        <div class="overlay"></div>
+
+        <!-- Banner -->
+        <div class="banner" style="opacity: 1; pointer-events: auto;">
+            <img src="assets/phar_char.webp" class="pharaoh" alt="Pharaoh" />
+            <img src="assets/eva.webp" class="logo" alt="EVA Logo" />
+            <h1 class="title">QR Scanner</h1>
+        </div>
+
+        <!-- Hieroglyphs -->
+        <div class="hiero-line left" style="opacity: 0.8;">𓇋𓆑𓄿𓆑𓄿𓂋𓄿𓅱𓉔𓋴</div>
+        <div class="hiero-line right" style="opacity: 0.8;">𓇋𓆑𓄿𓆑𓄿𓂋𓄿𓅱𓉔𓋴</div>
+
+        <!-- QR Scanner Content -->
+       <!-- Replace the QR Scanner Content section with this: -->
+<div class="qr-scanner-container">
+    <div class="qr-scanner-box">
+        <h2 class="qr-scanner-title">Scan QR Code</h2>
+        
+        <div class="scanner-view">
+            <div id="qr-reader"></div>
+        </div>
+        
+        <div class="scanner-divider">OR</div>
+        <div class="manual-input-group">
+            <label class="manual-input-label">Enter code manually:</label>
+            <div class="manual-input-wrapper">
+                <input type="password" id="manual-code" placeholder="Enter your code here" autocomplete="off">
+                <button class="scanner-btn" id="submit-btn">Submit</button>
+            </div>
+            <button class="toggle-input-btn" id="toggle-input">Show Text</button>
+        </div>
+        
+        <div id="scanner-message" class="scanner-message"></div>
+    </div>
+</div>
+
+        <!-- Footer -->
+        <div class="app-footer">
+            <div class="footer-content">
+                <small>© 2023 EVA Pharaohs</small>
+            </div>
+        </div>
+    </div>
+
+    <script src="qr-scanner.js"></script>
+    <script src="eva.js"></script>
+</body>
+</html>
