@@ -1,6 +1,7 @@
 /**
  * EVA Pharaohs QR Code Scanner
  * Professional QR Code scanning solution with manual input
+ * Forces use of rear camera
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -120,12 +121,48 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
     
-    // Initialize and configure QR scanner
+    // Find rear-facing camera
+    const getRearCamera = async () => {
+        try {
+            const devices = await Html5Qrcode.getCameras();
+            const rearCameras = devices.filter(device => 
+                device.label.toLowerCase().includes('back') || 
+                device.label.toLowerCase().includes('rear') ||
+                device.label.toLowerCase().includes('environment')
+            );
+            
+            if (rearCameras.length > 0) {
+                return rearCameras[0].id; // Return first rear camera found
+            }
+            
+            // If no explicitly labeled rear camera, try to find one by facingMode
+            const constraints = { video: { facingMode: { exact: "environment" } } };
+            const stream = await navigator.mediaDevices.getUserMedia(constraints);
+            const tracks = stream.getVideoTracks();
+            const rearCameraId = tracks[0]?.getSettings().deviceId;
+            tracks.forEach(track => track.stop());
+            
+            if (rearCameraId) return rearCameraId;
+            
+            // Fallback to last device if no rear camera found
+            return devices[devices.length - 1]?.id;
+        } catch (error) {
+            console.error("Error finding rear camera:", error);
+            return null;
+        }
+    };
+    
+    // Initialize and configure QR scanner with rear camera
     const initializeScanner = async () => {
         try {
             qrScannerContainer.scrollTo(0, 0); // Reset scroll position
             
             if (!await checkCameraPermission()) return;
+            
+            const rearCameraId = await getRearCamera();
+            if (!rearCameraId) {
+                showMessage('Could not access rear camera. Using default camera.', 'error');
+            }
             
             const html5QrcodeScanner = new Html5QrcodeScanner(
                 "qr-reader",
@@ -138,10 +175,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                 /* verbose= */ false
             );
             
-            html5QrcodeScanner.render(
-                decodedText => handleScanSuccess(decodedText),
-                error => handleScanError(error)
-            );
+            // Start with rear camera if found
+            if (rearCameraId) {
+                await html5QrcodeScanner.start(
+                    { deviceId: { exact: rearCameraId } },
+                    { fps: 10, qrbox: 250 },
+                    handleScanSuccess,
+                    handleScanError
+                );
+            } else {
+                // Fallback to default rendering if no rear camera found
+                html5QrcodeScanner.render(handleScanSuccess, handleScanError);
+            }
         } catch (error) {
             console.error("Scanner initialization failed:", error);
             showMessage('Scanner initialization failed. Please try refreshing the page.', 'error');
