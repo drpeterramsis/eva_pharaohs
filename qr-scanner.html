@@ -26,27 +26,28 @@
 
         <!-- QR Scanner Content -->
        <!-- Replace the QR Scanner Content section with this: -->
-<div class="qr-scanner-container">
-    <div class="qr-scanner-box">
-        <h2 class="qr-scanner-title">Scan QR Code</h2>
-        
-        <div class="scanner-view">
-            <div id="qr-reader"></div>
-        </div>
-        
-        <div class="scanner-divider">OR</div>
-        <div class="manual-input-group">
-            <label class="manual-input-label">Enter code manually:</label>
-            <div class="manual-input-wrapper">
-                <input type="password" id="manual-code" placeholder="Enter your code here" autocomplete="off">
-                <button class="scanner-btn" id="submit-btn">Submit</button>
+       <div class="qr-scanner-container">
+        <div class="qr-scanner-box">
+            <h2 class="qr-scanner-title">Scan QR Code</h2>
+            
+            <div class="scanner-view">
+                <video id="qr-reader" width="100%" height="auto"></video>
             </div>
-            <button class="toggle-input-btn" id="toggle-input">Show Text</button>
+            
+            <div class="scanner-divider">OR</div>
+            <div class="manual-input-group">
+                <label class="manual-input-label">Enter code manually:</label>
+                <div class="manual-input-wrapper">
+                    <input type="password" id="manual-code" placeholder="Enter your code here" autocomplete="off">
+                    <button class="scanner-btn" id="submit-btn">Submit</button>
+                </div>
+                <button class="toggle-input-btn" id="toggle-input">Show Text</button>
+            </div>
+            
+            <div id="scanner-message" class="scanner-message"></div>
         </div>
-        
-        <div id="scanner-message" class="scanner-message"></div>
     </div>
-</div>
+    
 
         <!-- Footer -->
         <div class="app-footer">
@@ -55,7 +56,10 @@
             </div>
         </div>
     </div>
-    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script type="module">
+        import Instascan from 'https://cdn.jsdelivr.net/npm/instascan@0.0.1/instascan.min.js';
+    </script>
+    
     <script src="qr-scanner.js"></script>
     <script src="eva.js"></script>
 </body>
