@@ -4,6 +4,7 @@
  * Forces use of rear camera with proper initialization
  */
 
+// Load the HTML5 QR code library
 document.addEventListener('DOMContentLoaded', async () => {
     // DOM elements
     const manualCodeInput = document.getElementById('manual-code');
