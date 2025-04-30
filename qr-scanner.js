@@ -1,7 +1,7 @@
 /**
  * EVA Pharaohs QR Code Scanner
  * Professional QR Code scanning solution with manual input
- * Forces use of rear camera
+ * Forces use of rear camera with proper initialization
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const messageDiv = document.getElementById('scanner-message');
     const qrScannerContainer = document.querySelector('.qr-scanner-container');
     
-    // Toggle input type between text and password
+    // Toggle input visibility
     toggleInputBtn.addEventListener('click', () => {
         const isPassword = manualCodeInput.type === 'password';
         manualCodeInput.type = isPassword ? 'text' : 'password';
@@ -20,26 +20,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         manualCodeInput.focus();
     });
     
-    // Show message function with auto-hide
+    // Show message with auto-hide for success
     const showMessage = (text, type) => {
         messageDiv.textContent = text;
         messageDiv.className = `scanner-message ${type}`;
         messageDiv.style.display = 'block';
         
-        // Auto-scroll to message and auto-hide success messages
         qrScannerContainer.scrollTo({
             top: qrScannerContainer.scrollHeight,
             behavior: 'smooth'
         });
         
         if (type === 'success') {
-            setTimeout(() => {
-                messageDiv.style.display = 'none';
-            }, 3000);
+            setTimeout(() => messageDiv.style.display = 'none', 3000);
         }
     };
     
-    // Validate URL format
+    // URL validation helpers
     const isValidUrl = (string) => {
         try {
             new URL(string);
@@ -49,18 +46,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
     
-    // Ensure URL has proper protocol
     const ensureHttp = (url) => {
-        if (!url.startsWith('http://') && !url.startsWith('https://')) {
-            return 'https://' + url;
-        }
-        return url;
+        return url.startsWith('http') ? url : `https://${url}`;
     };
     
-    // Handle manual input submission
+    // Manual input handling
     const handleManualInput = () => {
         const input = manualCodeInput.value.trim();
-        
         if (!input) {
             showMessage('Please enter a code.', 'error');
             manualCodeInput.focus();
@@ -68,138 +60,123 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         
         if (isValidUrl(input)) {
-            showMessage('Valid code detected. Redirecting...', 'success');
-            setTimeout(() => {
-                window.location.href = ensureHttp(input);
-            }, 500);
+            showMessage('Redirecting...', 'success');
+            setTimeout(() => { window.location.href = ensureHttp(input); }, 500);
         } else {
-            showMessage('The entered code is not a valid URL.', 'error');
+            showMessage('Invalid URL format.', 'error');
         }
     };
     
-    // Submit on button click or Enter key
     submitBtn.addEventListener('click', handleManualInput);
-    manualCodeInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleManualInput();
-    });
+    manualCodeInput.addEventListener('keypress', (e) => e.key === 'Enter' && handleManualInput());
     
-    // Check camera permissions
+    // Camera permission check
     const checkCameraPermission = async () => {
         try {
-            if (!navigator.permissions) return true; // Skip if Permissions API not supported
-            
-            const result = await navigator.permissions.query({ name: 'camera' });
-            if (result.state === 'denied') {
-                showMessage('Camera access denied. Please enable permissions in browser settings.', 'error');
-                return false;
+            if (navigator.permissions) {
+                const result = await navigator.permissions.query({ name: 'camera' });
+                if (result.state === 'denied') {
+                    showMessage('Camera access denied in browser settings.', 'error');
+                    return false;
+                }
             }
             return true;
         } catch (e) {
-            console.log('Permissions API not supported, proceeding anyway');
+            console.warn('Permissions API not supported');
             return true;
         }
     };
     
-    // Handle successful scan
+    // Scan handlers
     const handleScanSuccess = (decodedText) => {
         console.log("Scanned:", decodedText);
-        
         if (isValidUrl(decodedText)) {
-            showMessage('QR code detected. Redirecting...', 'success');
-            setTimeout(() => {
-                window.location.href = ensureHttp(decodedText);
-            }, 500);
+            showMessage('Valid code found. Redirecting...', 'success');
+            setTimeout(() => { window.location.href = ensureHttp(decodedText); }, 500);
         } else {
-            showMessage('Scanned code is not a valid URL.', 'error');
+            showMessage('Scanned code is not a URL.', 'error');
         }
     };
     
-    // Handle scan errors (only show relevant errors to user)
     const handleScanError = (error) => {
         if (!error.message.includes('No QR code found')) {
             console.error("Scan error:", error);
         }
     };
     
-    // Find rear-facing camera
+    // Camera selection
     const getRearCamera = async () => {
         try {
-            const devices = await Html5Qrcode.getCameras();
-            const rearCameras = devices.filter(device => 
-                device.label.toLowerCase().includes('back') || 
-                device.label.toLowerCase().includes('rear') ||
-                device.label.toLowerCase().includes('environment')
-            );
-            
-            if (rearCameras.length > 0) {
-                return rearCameras[0].id; // Return first rear camera found
+            // Try facingMode constraint first
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'environment' }
+                });
+                const track = stream.getVideoTracks()[0];
+                const settings = track.getSettings();
+                track.stop();
+                return settings.deviceId;
+            } catch (facingModeError) {
+                console.log('Facing mode approach failed, trying device list');
             }
             
-            // If no explicitly labeled rear camera, try to find one by facingMode
-            const constraints = { video: { facingMode: { exact: "environment" } } };
-            const stream = await navigator.mediaDevices.getUserMedia(constraints);
-            const tracks = stream.getVideoTracks();
-            const rearCameraId = tracks[0]?.getSettings().deviceId;
-            tracks.forEach(track => track.stop());
-            
-            if (rearCameraId) return rearCameraId;
-            
-            // Fallback to last device if no rear camera found
-            return devices[devices.length - 1]?.id;
+            // Fallback to device enumeration
+            const devices = await Html5Qrcode.getCameras();
+            const rearCam = devices.find(device => 
+                /back|rear|environment/i.test(device.label)
+            );
+            return rearCam?.id || devices[0]?.id;
         } catch (error) {
-            console.error("Error finding rear camera:", error);
+            console.error("Camera detection failed:", error);
             return null;
         }
     };
     
-    // Initialize and configure QR scanner with rear camera
+    // Scanner initialization
     const initializeScanner = async () => {
         try {
-            qrScannerContainer.scrollTo(0, 0); // Reset scroll position
+            qrScannerContainer.scrollTo(0, 0);
             
             if (!await checkCameraPermission()) return;
-            
-            const rearCameraId = await getRearCamera();
-            if (!rearCameraId) {
-                showMessage('Could not access rear camera. Using default camera.', 'error');
-            }
             
             const html5QrcodeScanner = new Html5QrcodeScanner(
                 "qr-reader",
                 { 
                     fps: 10, 
-                    qrbox: (width, height) => Math.min(width, height) * 0.8,
+                    qrbox: 250,
                     supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
-                    rememberLastUsedCamera: true
+                    rememberLastUsedCamera: false // Important for consistent rear camera behavior
                 },
-                /* verbose= */ false
+                false
             );
             
-            // Start with rear camera if found
+            const rearCameraId = await getRearCamera();
             if (rearCameraId) {
-                await html5QrcodeScanner.start(
-                    { deviceId: { exact: rearCameraId } },
-                    { fps: 10, qrbox: 250 },
-                    handleScanSuccess,
-                    handleScanError
-                );
-            } else {
-                // Fallback to default rendering if no rear camera found
-                html5QrcodeScanner.render(handleScanSuccess, handleScanError);
+                try {
+                    await html5QrcodeScanner.start(
+                        { deviceId: { exact: rearCameraId } },
+                        null,
+                        handleScanSuccess,
+                        handleScanError
+                    );
+                    return; // Successfully started with rear camera
+                } catch (startError) {
+                    console.warn("Failed to start with rear camera:", startError);
+                }
             }
+            
+            // Fallback to default camera selection
+            html5QrcodeScanner.render(handleScanSuccess, handleScanError);
+            
         } catch (error) {
-            console.error("Scanner initialization failed:", error);
-            showMessage('Scanner initialization failed. Please try refreshing the page.', 'error');
+            console.error("Scanner init error:", error);
+            showMessage('Failed to start camera. Please refresh and allow camera access.', 'error');
         }
     };
     
-    // Start the scanner
+    // Initialize and set up click handler
     initializeScanner();
-    
-    // Focus the input field when container is clicked (useful on mobile)
     qrScannerContainer.addEventListener('click', () => {
-        if (manualCodeInput.value === '') {
-            manualCodeInput.focus();
-        }
+        if (!manualCodeInput.value) manualCodeInput.focus();
     });
 });
