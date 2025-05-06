@@ -31,10 +31,10 @@
     <!-- Splash Screen -->
     <div class="splash">
 
-        <video class="background" autoplay muted loop playsinline>
+        <video id="backgroundVideo" class="background" autoplay muted loop>
             <source src="assets/gen_back.mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
+        
         
 
 
@@ -65,6 +65,10 @@
             <button onclick="openMyTeam()">My Team<span class="new-tab-icon"></span></button>
             <button onclick="openAllTeams()">All Teams<span class="new-tab-icon"></span></button>
             <button onclick="openQrCode()">QR Code<span class="new-tab-icon"></span></button>
+            <button id="cycleBackgroundBtn">
+                Change Background
+              </button>
+              
         </div>
     </div>
     <script src="auth.js"></script>

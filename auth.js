@@ -176,6 +176,42 @@ function showMainContent() {
         showLoginScreen();
         return;
     }
+        // Set background video based on team
+        const videoMap = {
+            'Strategic Leaders': 'assets/back_leaders.mp4',
+            'Builders': 'assets/back_builders.mp4',
+            'Workers': 'assets/back_workers.mp4',
+            'Farmers': 'assets/back_farmers.mp4',
+            'Riddle Solvers': 'assets/back_solvers.mp4'
+          };
+          
+          const teamNames = Object.keys(videoMap);
+          let currentTeamIndex = 0;
+          
+          function setBackgroundByTeam(team) {
+            const backgroundVideo = document.getElementById('backgroundVideo');
+            if (backgroundVideo && backgroundVideo.querySelector('source')) {
+              const source = backgroundVideo.querySelector('source');
+              const selectedVideo = videoMap[team] || 'assets/gen_back.mp4';
+              source.setAttribute('src', selectedVideo);
+              backgroundVideo.load();
+            }
+            
+            // Update the button title with the current team name
+            const button = document.getElementById('cycleBackgroundBtn');
+            if (button) {
+              button.textContent = `Change Background (Current: ${team})`;
+            }
+          }
+          
+          document.getElementById('cycleBackgroundBtn').addEventListener('click', () => {
+            currentTeamIndex = (currentTeamIndex + 1) % teamNames.length;
+            const nextTeam = teamNames[currentTeamIndex];
+            setBackgroundByTeam(nextTeam);
+            console.log('Background changed to:', nextTeam);
+          });
+          
+    
     
     // Create user info display
     const userInfoHTML = `
