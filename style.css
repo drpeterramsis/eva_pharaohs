@@ -35,7 +35,7 @@ html, body {
 }
 
 /* Enhanced Background with Parallax Effect */
-.background {
+.background_old {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -45,6 +45,22 @@ html, body {
     transition: transform 0.5s ease-out;
     filter: brightness(0.8);
 }
+
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* makes it zoomed and covers full area */
+    z-index: 0;
+    filter: brightness(0.8);
+    transform: scale(1.1);
+    transition: transform 0.5s ease-out;
+    pointer-events: none; /* keeps it non-interactive */
+}
+
 
 .splash:hover .background {
     transform: scale(1);
