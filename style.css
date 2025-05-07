@@ -243,23 +243,25 @@ html, body {
 .menu {
     position: fixed;
     display: flex;
-    flex-direction: column; /* Keep items in a single column */
-    align-items: flex-start;
-    gap: 10px;
+    flex-direction: column; 
+    align-items: flex-start; /* Keep items to the left */
+    gap: 20px;
     margin-top: 0.2rem;
     font-family: 'HN';
-    top: 0.2rem; /* Remove fixed top */
-    bottom: auto; /* Stick near the bottom on small screens */
-    left: 20px;
-    right: 20px; /* Add this to avoid overflow */
+    top: 0;
+    bottom: 0; /* Extend to the bottom */
+    left: 10px; /* Keep the menu to the left */
+    right: auto; /* Remove any right positioning */
     z-index: 10;
     opacity: 0;
     pointer-events: none;
     transition: all 1s ease;
-    max-height: 90vh; /* Set a maximum height for the menu */
-    overflow-y: auto; /* Enable vertical scrolling */
-    justify-items: center;
+    max-height: 90vh; 
+    overflow-y: auto;
+    justify-content: space-between; /* Distribute items equally along the height */
 }
+
+
 .menu::-webkit-scrollbar {
     display: none;
 }
@@ -284,6 +286,7 @@ html, body {
     align-items: center; /* Vertically center the content */
     justify-content: center; /* Left align the content */
     font-weight:bold;
+    height:auto;
 }
 .menu button::before {
     content: '';
@@ -291,7 +294,7 @@ html, body {
     top: 0;
     left: -100%;
     width: 100%;
-    height: 100%;
+    height: auto;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: 0.5s;
 }
@@ -1033,4 +1036,110 @@ html, body {
 .header-title h1, .header-title h2 {
     margin: 0;
     text-align:center;
+}
+/* Notifier Modal Style */
+.notifier {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.notifier-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+}
+
+.notifier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notifier-header h3 {
+    margin: 0;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.notifier-body p {
+    margin: 20px 0;
+}
+
+.notifier-body button {
+    background-color: #f9db75;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+/* ====================== */
+/* POPUP STYLES           */
+/* ====================== */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* This ensures the popup is centered */
+    width: 300px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    margin: 0;  /* Prevent unexpected margins */
+    padding: 0;
+
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    z-index: 999; /* Below popup but above everything else */
+    display: none;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0);
+    width: 300px;
+}
+
+.popup-content input {
+    padding: 10px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.popup-content button {
+    padding: 10px 20px;
+    background-color: #f9db75;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup-content button:hover {
+    background-color: #f7c74f;
 }

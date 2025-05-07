@@ -235,6 +235,16 @@ function showMainContent() {
             pharaohImg.setAttribute('src', imgSrc);
         }
     }
+    
+    // Hide all team divs first
+    const allTeamDivs = document.querySelectorAll('.menu > div[id]');
+    allTeamDivs.forEach(div => div.style.display = 'none');
+
+    // Show only the relevant team div
+    const teamDiv = document.getElementById(userData.team);
+    if (teamDiv) {
+        teamDiv.style.display = 'block';
+    }
 
     // Create pharaoh character
     const pharaohContainer = document.createElement('div');
@@ -375,3 +385,131 @@ function initializeMenuButtons() {
         });
     });
 }
+
+// Function to display the notifier with a custom message
+function showNotifier(message) {
+    document.getElementById("notifierMessage").innerHtml = message;
+    document.getElementById("notifier").style.display = "flex";
+}
+function showNotifier(html) {
+    document.getElementById("notifier-overlay").style.display = "block";
+    const notifier = document.getElementById("notifier");
+    notifier.style.display = "block";
+    notifier.querySelector(".notifier-body").innerHTML = html;
+}
+
+
+// Function to close the notifier
+function closeNotifier() {
+    document.getElementById("notifier").style.display = "none";
+    document.getElementById("notifier-overlay").style.display = "none";
+}
+
+
+// Action functions for buttons
+function customAction1() {
+    alert("Action 1 clicked!");
+    closeNotifier();  // Close the notifier after action
+}
+
+function customAction2() {
+    alert("Action 2 clicked!");
+    closeNotifier();  // Close the notifier after action
+}
+
+
+
+
+const PASSWORDS = {
+    preTrainingAction: "1",
+    teamSimulationAction: "2",
+    postTrainingAction: "3"
+};
+
+function checkPassword() {
+    // Show the password prompt (notifier popup)
+    document.getElementById('passwordPrompt').style.display = 'flex';
+    // Hide the team container in case the user failed the previous attempt
+    document.getElementById('teamContainer').style.display = 'none';
+}
+
+
+
+function teamSimulation() {
+    // Show the password prompt for Pre Training
+    showPasswordPrompt("Please enter the password to access Your Team:", "teamSimulationAction");
+}
+
+
+
+
+function preTrain() {
+    // Show the password prompt for Pre Training
+    showPasswordPrompt("Please enter the password to access Pre Training:", "preTrainingAction");
+}
+
+function postTrain() {
+    // Show the password prompt for Post Training
+    showPasswordPrompt("Please enter the password to access Post Training:", "postTrainingAction");
+}
+
+// Show the password prompt with different messages and actions
+function showPasswordPrompt(message, action) {
+    document.getElementById("popup-overlay").style.display = "block";
+    document.getElementById("passwordPrompt").style.display = "block";
+    document.getElementById("errorMessage").style.display = "none"; // Hide error message
+    document.getElementById("passwordInput").value = ''; // Clear the password input field
+    document.getElementById("passwordPrompt").setAttribute('data-action', action); // Store the action type
+    document.querySelector(".popup-content p").innerText = message; // Set the message in the prompt
+}
+// Modify just the verifyPassword function (keep everything else the same)
+function verifyPassword() {
+    var password = document.getElementById("passwordInput").value;
+    var action = document.getElementById("passwordPrompt").getAttribute('data-action');
+    var correctPassword = PASSWORDS[action]; // Get password for this action
+
+    if (password === correctPassword) {
+        if (action === "preTrainingAction") {
+            alert("Pre Training access granted!");
+            closePopup();
+        } else if (action === "postTrainingAction") {
+            window.open("https://www.google.com", "_blank");
+            closePopup();
+        } else if (action === "teamSimulationAction") {
+            document.getElementById('teamContainer').style.display = 'block';
+            document.getElementById('showTeamButton').style.display = 'none';
+            closePopup();
+        }
+    } else {
+        document.getElementById("errorMessage").style.display = "block";
+    }
+}
+
+// Close the popup
+function closePopup(event) {
+    if (event) {
+        event.stopPropagation();
+        // Only close if clicking on overlay or close button
+        if (event.target.classList.contains('popup-overlay') || 
+            event.target.classList.contains('popup-close')) {
+            document.getElementById("popup-overlay").style.display = "none";
+            document.getElementById("passwordPrompt").style.display = "none";
+        }
+    } else {
+        document.getElementById("popup-overlay").style.display = "none";
+        document.getElementById("passwordPrompt").style.display = "none";
+    }
+}
+
+// Trigger verifyPassword on Enter key press
+document.getElementById("passwordInput").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        verifyPassword();
+    }
+});
+
+
+
+
+
+
