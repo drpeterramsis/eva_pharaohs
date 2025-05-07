@@ -163,32 +163,12 @@ function showMainContent() {
         return;
     }
 
-    const userNameDisplay = document.querySelector('.user-name-display');
-    const teamDisplay = document.querySelector('.team-display');
-
-    if (userNameDisplay) {
-        userNameDisplay.textContent = userData.name;
-    }
-
-    if (teamDisplay) {
-        teamDisplay.textContent = userData.team;
-    }
-
     const videoMap = {
         'Strategic Leaders': 'assets/back_leaders.mp4',
         'Builders': 'assets/back_builders.mp4',
         'Workers': 'assets/back_workers.mp4',
         'Farmers': 'assets/back_farmers.mp4',
         'Riddle Solvers': 'assets/back_solvers.mp4'
-    };
-
-    const PHARAOH_IMAGES = {
-        'Strategic Leaders': 'assets/snefru_leader.png',
-        'Builders': 'assets/snefru_builder.png',
-        'Workers': 'assets/snefru_worker.png',
-        'Farmers': 'assets/snefru_farmer.png',
-        'Riddle Solvers': 'assets/snefru_solver.png',
-        'default': 'assets/snefru_main.png'
     };
 
     const teamNames = Object.keys(videoMap);
@@ -208,18 +188,12 @@ function showMainContent() {
         if (button) {
             button.innerHTML = `Change Background<br>(Current: ${team})`;
         }
-
-        const pharaohImg = document.querySelector('.pharaoh-character');
-        if (pharaohImg) {
-            const imgSrc = PHARAOH_IMAGES[team] || PHARAOH_IMAGES['default'];
-            pharaohImg.setAttribute('src', imgSrc);
-        }
     }
 
     const pharaohContainer = document.createElement('div');
     pharaohContainer.className = 'pharaoh-container';
     pharaohContainer.innerHTML = `
-        <img src="${PHARAOH_IMAGES[userData.team] || PHARAOH_IMAGES['default']}" class="pharaoh-character" alt="Pharaoh Character" />
+        <img src="assets/phar_char.webp" class="pharaoh-character" alt="Pharaoh Character" />
     `;
     document.body.appendChild(pharaohContainer);
 
@@ -236,7 +210,7 @@ function showMainContent() {
     setBackgroundByTeam(userData.team);
 
     const userInfoHTML = `
-        <div class="user-info-container" style="display:none;">
+        <div class="user-info-container">
             <div class="user-info">
                 <span class="user-team"></span><span class="welcome-message"><big> ${userData.name}</span>
                 <span class="welcome-message" style="color:#834333;"><big>${userData.team}</span>
@@ -307,8 +281,6 @@ function animateContentTransition() {
         }, 500);
     }, 500);
 }
-
-
 
 function initializeMenuButtons() {
     const buttons = document.querySelectorAll('.menu button');
