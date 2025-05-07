@@ -1,5 +1,5 @@
 // auth-offline.js - Works 100% offline with local files
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM fully loaded - Offline Mode');
     initializeAuthSystem();
 });
@@ -41,7 +41,7 @@ const LOCAL_MEMBERS_DATA = [
 function initializeAuthSystem() {
     // Check for existing session
     const userData = safelyGetUserData();
-    
+
     if (userData) {
         console.log('User already logged in:', userData.email);
         showMainContent();
@@ -55,16 +55,16 @@ function safelyGetUserData() {
     try {
         const userData = localStorage.getItem('userData');
         if (!userData) return null;
-        
+
         const parsedData = JSON.parse(userData);
-        
+
         // Validate stored data structure
         if (!parsedData.email || !parsedData.team || !parsedData.name) {
             console.warn('Invalid user data structure', parsedData);
             localStorage.removeItem('userData');
             return null;
         }
-        
+
         return parsedData;
     } catch (e) {
         console.error('Error reading user data:', e);
@@ -74,21 +74,21 @@ function safelyGetUserData() {
 
 function showLoginScreen() {
     console.log('Displaying login screen');
-    
+
     // Clear any existing UI
     removeElement('.login-container');
     removeElement('.user-info-container');
     removeElement('.app-footer');
-    
+
     // Reset visual states
     const splash = document.querySelector('.splash');
     if (splash) {
         splash.classList.remove(
-            'show-banner', 'show-hiero-line', 'show-user-info', 
+            'show-banner', 'show-hiero-line', 'show-user-info',
             'show-menu', 'show-footer'
         );
     }
-    
+
     // Create fresh login UI
     const loginHTML = `
         <div class="login-container">
@@ -105,50 +105,50 @@ function showLoginScreen() {
             </div>
         </div>
     `;
-    
+
     document.querySelector('.splash').insertAdjacentHTML('beforeend', loginHTML);
-    
+
     // Set up event listeners
     document.getElementById('signInBtn').addEventListener('click', handleLogin);
-    document.getElementById('emailInput').addEventListener('keypress', function(e) {
+    document.getElementById('emailInput').addEventListener('keypress', function (e) {
         if (e.key === 'Enter') handleLogin();
     });
-    
+
     document.getElementById('emailInput').focus();
 }
 
 function handleLogin() {
     console.log('Login initiated (offline mode)');
-    
+
     const emailInput = document.getElementById('emailInput');
     const errorMsg = document.getElementById('errorMsg');
     const email = emailInput.value.trim();
     errorMsg.textContent = '';
-    
+
     // Validate email format
     if (!email) {
         showError(errorMsg, 'Please enter your email');
         return;
     }
-    
+
     if (!isValidEmail(email)) {
         showError(errorMsg, 'Please enter a valid email address');
         return;
     }
-    
+
     try {
         console.log('Authenticating against local data');
-        
+
         // Use the hardcoded member data
-        const user = LOCAL_MEMBERS_DATA.find(member => 
+        const user = LOCAL_MEMBERS_DATA.find(member =>
             member.Email && member.Email.toLowerCase() === email.toLowerCase()
         );
-        
+
         if (!user) {
             showError(errorMsg, 'User not found. Please check your email.');
             return;
         }
-        
+
         // Store session
         localStorage.setItem('userData', JSON.stringify({
             name: user.Name,
@@ -156,10 +156,10 @@ function handleLogin() {
             team: user.Team,
             code: user.Code
         }));
-        
+
         // Proceed to main content
         showMainContent();
-        
+
     } catch (error) {
         console.error('Authentication failed:', error);
         showError(errorMsg, 'Login error. Please try again.');
@@ -168,79 +168,90 @@ function handleLogin() {
 
 function showMainContent() {
     console.log('Displaying main content');
-    
+
     removeElement('.login-container');
-    
+
     const userData = safelyGetUserData();
     if (!userData) {
         showLoginScreen();
         return;
     }
-        // Set background video based on team
-        const videoMap = {
-            'Strategic Leaders': 'assets/back_leaders.mp4',
-            'Builders': 'assets/back_builders.mp4',
-            'Workers': 'assets/back_workers.mp4',
-            'Farmers': 'assets/back_farmers.mp4',
-            'Riddle Solvers': 'assets/back_solvers.mp4'
-          };
-          
-          const teamNames = Object.keys(videoMap);
-          let currentTeamIndex = 0;
-          
-          function setBackgroundByTeam(team) {
-            const backgroundVideo = document.getElementById('backgroundVideo');
-            if (backgroundVideo && backgroundVideo.querySelector('source')) {
-              const source = backgroundVideo.querySelector('source');
-              const selectedVideo = videoMap[team] || 'assets/gen_back.mp4';
-              source.setAttribute('src', selectedVideo);
-              backgroundVideo.load();
-            }
-            
-            // Update the button title with the current team name
-            const button = document.getElementById('cycleBackgroundBtn');
-            if (button) {
-              button.textContent = `Change Background (Current: ${team})`;
-            }
-          }
-          
-          document.getElementById('cycleBackgroundBtn').addEventListener('click', () => {
+
+    // Set background video based on team
+    const videoMap = {
+        'Strategic Leaders': 'assets/back_leaders.mp4',
+        'Builders': 'assets/back_builders.mp4',
+        'Workers': 'assets/back_workers.mp4',
+        'Farmers': 'assets/back_farmers.mp4',
+        'Riddle Solvers': 'assets/back_solvers.mp4'
+    };
+
+    const teamNames = Object.keys(videoMap);
+    let currentTeamIndex = teamNames.indexOf(userData.team);
+    if (currentTeamIndex === -1) currentTeamIndex = 0;
+
+    function setBackgroundByTeam(team) {
+        const backgroundVideo = document.getElementById('backgroundVideo');
+        if (backgroundVideo && backgroundVideo.querySelector('source')) {
+            const source = backgroundVideo.querySelector('source');
+            const selectedVideo = videoMap[team] || 'assets/gen_back.mp4';
+            source.setAttribute('src', selectedVideo);
+            backgroundVideo.load();
+        }
+
+        const button = document.getElementById('cycleBackgroundBtn');
+        if (button) {
+            button.innerHTML = `Change Background<br>(Current: ${team})`;
+        }
+    }
+
+     // After setting up the UI, show the pharaoh character
+     const pharaohContainer = document.createElement('div');
+     pharaohContainer.className = 'pharaoh-container';
+     pharaohContainer.innerHTML = `
+         <img src="assets/phar_char.webp" class="pharaoh-character" alt="Pharaoh Character" />
+     `;
+     document.body.appendChild(pharaohContainer);
+
+    // ✅ Only run if the button exists
+    const cycleBtn = document.getElementById('cycleBackgroundBtn');
+    if (cycleBtn) {
+        cycleBtn.addEventListener('click', () => {
             currentTeamIndex = (currentTeamIndex + 1) % teamNames.length;
             const nextTeam = teamNames[currentTeamIndex];
             setBackgroundByTeam(nextTeam);
             console.log('Background changed to:', nextTeam);
-          });
-          
-    
-    
+        });
+    }
+
+    setBackgroundByTeam(userData.team);
+
     // Create user info display
     const userInfoHTML = `
         <div class="user-info-container">
             <div class="user-info">
-                <span class="welcome-message">Welcome, ${userData.name}</span>
-                <span class="user-team">Team: ${userData.team}</span>
+                <span class="user-team"><small>Welcome</small></span><span class="welcome-message"><big> ${userData.name}</span>
+                <span class="welcome-message" style="color:#834333;"><big>${userData.team}</span>
             </div>
         </div>
     `;
-    
+
     // Create footer
-        const footerHTML = `
+    const footerHTML = `
 <footer class="app-footer">
   <div class="footer-content">
     <small>@2025 Dr. Peter Ramsis | DCC5</small>
     <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
   </div>
 </footer>
-
-
     `;
-    
+
     document.querySelector('.splash').insertAdjacentHTML('beforeend', userInfoHTML);
     document.querySelector('.splash').insertAdjacentHTML('beforeend', footerHTML);
-    
+
     // Set up sign out
     document.getElementById('signOutBtn').addEventListener('click', handleSignOut);
-    
+
     // Animate transition
     animateContentTransition();
 }
@@ -272,20 +283,20 @@ function animateContentTransition() {
         loader.classList.add('fade-out');
         setTimeout(() => {
             loader.style.display = 'none';
-        }, 1000);
+        }, 2000);
     }
-    
+
     setTimeout(() => {
         const splashContent = document.querySelector('.content');
         if (splashContent) splashContent.classList.add('fade-out');
-        
+
         setTimeout(() => {
             const splash = document.querySelector('.splash');
             if (splash) {
                 splash.classList.add('show-banner');
                 splash.classList.add('show-hiero-line');
                 splash.classList.add('show-user-info');
-                
+
                 setTimeout(() => {
                     splash.classList.add('show-menu');
                     splash.classList.add('show-footer');
@@ -299,24 +310,24 @@ function animateContentTransition() {
 function initializeMenuButtons() {
     const buttons = document.querySelectorAll('.menu button');
     buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
+        button.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             button.classList.add('button-clicked');
             setTimeout(() => {
                 button.classList.remove('button-clicked');
             }, 300);
-            
+
             const targetUrls = {
                 'My Team': 'teams.html',
-            'All Teams': 'allteams.html',
-            'QR Code': 'qr-scanner.html'
+                'All Teams': 'allteams.html',
+                'QR Code': 'qr-scanner.html'
             };
-            
+
             const buttonText = button.textContent.trim();
             if (targetUrls[buttonText]) {
-               // window.location.href = targetUrls[buttonText];
-               window.open(targetUrls[buttonText], '_blank');
+                // window.location.href = targetUrls[buttonText];
+                window.open(targetUrls[buttonText], '_blank');
             }
         });
     });
