@@ -1,4 +1,3 @@
-// auth-offline.js - Works 100% offline with local files
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM fully loaded - Offline Mode');
     initializeAuthSystem();
@@ -10,31 +9,46 @@ const LOCAL_MEMBERS_DATA = [
         "Name": "Peter Ramsis Tawfeek",
         "Email": "peter.tawfik@evapharma.com",
         "Code": 4639,
-        "Team": "Builders"
+        "Team": "Builders",
+        "Kingdom": "1",
+        "Date": "07/05",
+        "Time": "10:00 PM"
     },
     {
         "Name": "Maro Peter Ramsis",
         "Email": "dr.peter.salib@gmail.com",
         "Code": 1234,
-        "Team": "Strategic Leaders"
+        "Team": "Strategic Leaders",
+        "Kingdom": "1",
+        "Date": "07/05",
+        "Time": "10:00 PM"
     },
     {
         "Name": "Fiby Magdy Ibrahem",
         "Email": "fabulla86@gmail.com",
         "Code": 7896,
-        "Team": "Workers"
+        "Team": "Workers",
+        "Kingdom": "1",
+        "Date": "07/05",
+        "Time": "10:00 PM"
     },
     {
         "Name": "Bassem Rafaat Nagiub",
         "Email": "basem.nagiub@evapharma.com",
         "Code": 8524,
-        "Team": "Workers"
+        "Team": "Workers",
+        "Kingdom": "1",
+        "Date": "07/05",
+        "Time": "10:00 PM"
     },
     {
         "Name": "Guest",
         "Email": "guest@evapharma.com",
         "Code": 1001,
-        "Team": "Workers"
+        "Team": "Workers",
+        "Kingdom": "1",
+        "Date": "07/05",
+        "Time": "10:00 PM"
     }
 ];
 
@@ -55,7 +69,7 @@ function safelyGetUserData() {
         if (!userData) return null;
 
         const parsedData = JSON.parse(userData);
-        if (!parsedData.email || !parsedData.team || !parsedData.name) {
+        if (!parsedData.email || !parsedData.team || !parsedData.name || !parsedData.kingdom) {
             console.warn('Invalid user data structure', parsedData);
             localStorage.removeItem('userData');
             return null;
@@ -79,14 +93,14 @@ function showLoginScreen() {
     if (splash) {
         splash.classList.remove(
             'show-banner', 'show-hiero-line', 'show-user-info',
-            'show-menu', 'show-footer'
+            'show-menu', 'show-footer', 'show-notes'
         );
     }
 
     const loginHTML = `
         <div class="login-container">
             <div class="login-box">
-                <h2>Login</h2>
+                <h2>People of Kemet</h2>
                 <div class="input-group">
                     <input type="email" id="emailInput" 
                            placeholder="Enter your email" 
@@ -143,9 +157,12 @@ function handleLogin() {
             name: user.Name,
             email: user.Email,
             team: user.Team,
-            code: user.Code
+            code: user.Code,
+            kingdom: user.Kingdom,
+            date: user.Date,
+            time: user.Time
         }));
-
+        
         showMainContent();
     } catch (error) {
         console.error('Authentication failed:', error);
@@ -163,23 +180,26 @@ function showMainContent() {
         return;
     }
 
+    // Update user info displays
     const userNameDisplay = document.querySelector('.user-name-display');
     const teamDisplay = document.querySelector('.team-display');
+    const kingdomDisplay = document.querySelector('.kingdom-display');
+    const dateDisplay = document.querySelector('.date-display');
+    const timeDisplay = document.querySelector('.time-display');
 
-    if (userNameDisplay) {
-        userNameDisplay.textContent = userData.name;
-    }
+    if (userNameDisplay) userNameDisplay.textContent = userData.name;
+    if (teamDisplay) teamDisplay.textContent = userData.team;
+    if (kingdomDisplay) kingdomDisplay.textContent = userData.kingdom;
+    if (dateDisplay) dateDisplay.textContent = userData.date;
+    if (timeDisplay) timeDisplay.textContent = userData.time;
 
-    if (teamDisplay) {
-        teamDisplay.textContent = userData.team;
-    }
-
+    // Team-specific configurations
     const videoMap = {
         'Strategic Leaders': 'assets/back_leaders.mp4',
         'Builders': 'assets/back_builders.mp4',
         'Workers': 'assets/back_workers.mp4',
         'Farmers': 'assets/back_farmers.mp4',
-        'Riddle Solvers': 'assets/back_solvers.mp4'
+        'Riddles Solvers': 'assets/back_solvers.mp4'
     };
 
     const PHARAOH_IMAGES = {
@@ -187,7 +207,7 @@ function showMainContent() {
         'Builders': 'assets/snefru_builder.png',
         'Workers': 'assets/snefru_worker.png',
         'Farmers': 'assets/snefru_farmer.png',
-        'Riddle Solvers': 'assets/snefru_solver.png',
+        'Riddles Solvers': 'assets/snefru_solver.png',
         'default': 'assets/snefru_main.png'
     };
 
@@ -216,6 +236,7 @@ function showMainContent() {
         }
     }
 
+    // Create pharaoh character
     const pharaohContainer = document.createElement('div');
     pharaohContainer.className = 'pharaoh-container';
     pharaohContainer.innerHTML = `
@@ -223,6 +244,7 @@ function showMainContent() {
     `;
     document.body.appendChild(pharaohContainer);
 
+    // Set up background cycling
     const cycleBtn = document.getElementById('cycleBackgroundBtn');
     if (cycleBtn) {
         cycleBtn.addEventListener('click', () => {
@@ -233,8 +255,29 @@ function showMainContent() {
         });
     }
 
+    // Set initial background
     setBackgroundByTeam(userData.team);
 
+    // Populate team notes
+    const teamNotesList = document.getElementById('teamNotesList');
+    if (teamNotesList) {
+        teamNotesList.innerHTML = ''; // Clear existing notes
+        
+        const teamInfo = teamData[userData.team];
+        if (teamInfo && teamInfo.notes) {
+            teamInfo.notes.forEach(note => {
+                const li = document.createElement('li');
+                li.textContent = note;
+                teamNotesList.appendChild(li);
+            });
+        } else {
+            const li = document.createElement('li');
+            li.textContent = "No notes available for this team.";
+            teamNotesList.appendChild(li);
+        }
+    }
+
+    // Create user info and footer
     const userInfoHTML = `
         <div class="user-info-container" style="display:none;">
             <div class="user-info">
@@ -245,12 +288,12 @@ function showMainContent() {
     `;
 
     const footerHTML = `
-<footer class="app-footer">
-  <div class="footer-content">
-    <small>@2025 Dr. Peter Ramsis | DCC5</small>
-    <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
-  </div>
-</footer>
+        <footer class="app-footer">
+            <div class="footer-content">
+                <small>@2025 Dr. Peter Ramsis | DCC5</small>
+                <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
+            </div>
+        </footer>
     `;
 
     document.querySelector('.splash').insertAdjacentHTML('beforeend', userInfoHTML);
@@ -297,7 +340,7 @@ function animateContentTransition() {
         setTimeout(() => {
             const splash = document.querySelector('.splash');
             if (splash) {
-                splash.classList.add('show-banner', 'show-hiero-line', 'show-user-info');
+                splash.classList.add('show-banner', 'show-hiero-line', 'show-user-info','show-notes');
 
                 setTimeout(() => {
                     splash.classList.add('show-menu', 'show-footer');
@@ -307,8 +350,6 @@ function animateContentTransition() {
         }, 500);
     }, 500);
 }
-
-
 
 function initializeMenuButtons() {
     const buttons = document.querySelectorAll('.menu button');

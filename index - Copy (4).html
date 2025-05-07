@@ -46,7 +46,12 @@
  <div class="hiero-line right">𓇋𓆑𓄿𓆑𓄿𓂋𓄿𓅱𓉔𓋴</div>
  <div class="main-content-container">
     <!-- Change this part in index.html -->
-
+<div class="banner">
+   
+    <!-- Replace the static title with dynamic placeholders -->
+    <h1 class="user-name-display"></h1>
+    <h2 class="team-display"></h2>
+</div>
 
        
 
@@ -57,43 +62,12 @@
         
         <!-- Navigation Menu -->
         <div class="menu">
+                  <button onclick="preTrain()">Pre Training<span class="new-tab-icon"></span></button>
+            <button onclick="openMyTeam()">My Team<span class="new-tab-icon"></span></button>
+
+      
+            <button onclick="postTrain()">Post Training<span class="new-tab-icon"></span></button>
             <img src="assets/kemet.png" class="logo-main" alt="EVA Logo" />
-
-
-
-
-
-            <div class="banner">
-                <table>
-                    <tr>
-                        <td colspan="2" class="header-title">
-                            <h1 class="user-name-display"></h1>
-                            <h2 class="team-display"></h2>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Kingdom:</td>
-                        <td style="text-align:right;" class="kingdom-display"></td>
-                    </tr>
-                    <tr>
-                        <td>Date:</td>
-                        <td style="text-align:right;" class="date-display"></td>
-                    </tr>
-                    <tr>
-                        <td>Time:</td>
-                        <td style="text-align:right;" class="time-display"></td>
-                    </tr>
-                </table>
-            </div>
-            
-            <button onclick="preTrain()">Pre Training<span class="new-tab-icon"></span></button>
-            <!--  <button onclick="openMyTeam()">My Team<span class="new-tab-icon"></span></button> -->
-           <button onclick="postTrain()">Post Training<span class="new-tab-icon"></span></button>
-            <div class="notes">
-                    <ul id="teamNotesList"></ul>
-                </div>
-            </div>
-            
              <!--   <button onclick="openAllTeams()">All Teams<span class="new-tab-icon"></span></button>-->
           <!--  <button id="cycleBackgroundBtn">
                 Change Background
@@ -103,7 +77,6 @@
     <img src="assets/phar_char.webp" class="pharaoh-character" />
 </div>
     </div></div>
-    <script src="team-data.js"></script>
     <script src="auth.js"></script>
     <script src="eva.js"></script>
 </body>
