@@ -465,7 +465,34 @@ document.getElementById("passwordInput").addEventListener("keydown", function(ev
 });
 
 
+function videoBrief() {
+    const backgroundVideo = document.getElementById('backgroundVideo');
+    if (!backgroundVideo) return;
 
+    const videoSrc = backgroundVideo.querySelector('source')?.getAttribute('src');
+    if (!videoSrc) return;
 
+    // Remove existing popup if any
+    const existingPopup = document.querySelector('.video-popup');
+    if (existingPopup) existingPopup.remove();
 
+    // Create popup container
+    const popup = document.createElement('div');
+    popup.className = 'video-popup';
+    popup.innerHTML = `
+        <div class="video-popup-overlay" onclick="document.querySelector('.video-popup').remove()"></div>
+        <div class="video-popup-content">
+            <button class="video-popup-close" onclick="document.querySelector('.video-popup').remove()">✖</button>
+            <video class="popup-video" autoplay muted loop playsinline>
+                <source src="${videoSrc}" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    `;
 
+    document.body.appendChild(popup);
+
+    // Manually trigger play to ensure autoplay works across browsers
+    const popupVideo = popup.querySelector('video');
+    popupVideo.play().catch(err => console.warn("Autoplay failed:", err));
+}

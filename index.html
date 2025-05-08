@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EVA Pharaohs</title>
+    <title>People of Kemet</title>
 
     <!-- PWA Manifest and Theme -->
     <link rel="manifest" href="manifest.json">
@@ -86,11 +86,12 @@
                 </table>
             </div>
 
+            <button style="display:none; background:#f9db75" onclick="videoBrief()">Video Brief<span class="new-tab-icon"></span></button>
 
-            <button  style="background:#f9db75" onclick="preTrain()">Pre Training<span class="new-tab-icon"></span></button>
+            <button  onclick="preTrain()">Pre Training<span class="new-tab-icon"></span></button>
 
 
-            <button  onclick="checkPassword(),teamSimulation()" id="showTeamButton">Simulation</button>
+            <button style="display:block;" onclick="checkPassword(),teamSimulation()" id="showTeamButton">Simulation</button>
 
 <div id="teamContainer" style="display:none;">
    <!-- Your existing team buttons (Strategic Leaders, Builders, etc.) -->
@@ -134,7 +135,9 @@
     <button id="default-Responsibilities">Responsibilities<span class="new-tab-icon"></span></button>
    </div>
 </div>
-<button style="background:#f9db75" onclick="postTrain()">Post Training<span class="new-tab-icon"></span></button>
+
+
+<button onclick="postTrain()">Post Training<span class="new-tab-icon"></span></button>
 
 </div>
 
