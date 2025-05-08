@@ -16,6 +16,14 @@
 /* ====================== */
 /* BASE STYLES            */
 /* ====================== */
+
+:root {
+  --pharaoh-max-width: 600px;
+  --pharaoh-float-duration: 7s;
+  --pharaoh-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -97,7 +105,7 @@ html, body {
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 20px 40px;
+    padding: 10px;
     opacity: 0;
     pointer-events: none;
     transition: all 1s ease;
@@ -859,18 +867,18 @@ html, body {
 /* PHARAOH CHARACTER      */
 /* ====================== */
 .pharaoh-container {
-    position: fixed; /* Changed from absolute to fixed for better positioning */
-    right: 0;
-    bottom: 0;
-    z-index: 6;
-    width: min(60vw, 600px); /* Limits maximum width while being responsive */
-    height: auto;
-    max-height: 80vh; /* Prevents character from being too tall */
-    aspect-ratio: 1/1.2; /* Maintains character proportions */
-    display: flex;
-    justify-content: flex-end; /* Aligns character to the right */
-    align-items: flex-end; /* Aligns character to the bottom */
-    transition: all 0.5s ease; /* Smooth transitions for any changes */
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  width: min(60vw, var(--pharaoh-max-width));
+  max-height: 80vh;
+  aspect-ratio: 1 / 1.2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  transition: all 0.5s ease;
+  pointer-events: none; /* Prevents accidental interaction */
 }
 
 .splash.show-menu .pharaoh-container {
@@ -878,17 +886,18 @@ html, body {
 }
 
 .pharaoh-character {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: right bottom; /* Ensures character stays anchored to bottom right */
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
-    animation: float 7s ease-in-out infinite;
-    opacity: 0;
-    transition: 
-        opacity 2s ease-in,
-        transform 0.3s ease; /* Added smooth transform for hover effects */
-    transform-origin: bottom right; /* Makes scaling look more natural */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  filter: drop-shadow(var(--pharaoh-shadow));
+  opacity: 0;
+  animation: float var(--pharaoh-float-duration) ease-in-out infinite;
+  transition: 
+    opacity 2s ease-in,
+    transform 0.3s ease;
+  transform-origin: bottom right;
+  will-change: transform, opacity;
 }
 
 .pharaoh-character.loaded {
@@ -932,11 +941,6 @@ html, body {
     }
 
 
-    .pharaoh-character {
-        width: 90vw;
-        height: auto;
-    }
-
     .qr-scanner-container {
         height: calc(100vh - 9rem);
         margin-top: 7rem;
@@ -949,6 +953,15 @@ html, body {
     .qr-scanner-title {
         font-size: 1.5rem;
     }
+
+      .pharaoh-container {
+    width: 60vw;
+    aspect-ratio: auto; /* Allows natural height */
+  }
+
+  .pharaoh-character {
+    height: auto;
+  }
 }
 
 .centered-logo {
