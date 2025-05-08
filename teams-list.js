@@ -48,8 +48,19 @@ const LOCAL_MEMBERS_DATA = [
         "Date": "07/05",
         "Time": "10:00 PM"
     },
+  
 
+  //Admins
 
+  {
+    "Name": "Dr. George Saadan",
+    "Email": "george.saadan@evapharma.com",
+    "Code": 10001,
+    "Team": "Strategic Leaders",
+    "Kingdom": "K01",
+      "Date": "Tue 13/05",
+      "Time": "9 am - 11 am"
+},
 
 
 
