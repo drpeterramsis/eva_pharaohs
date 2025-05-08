@@ -424,7 +424,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Andrew Basem Adly",
       "Email": "andrew.bassem@evapharma.com",
       "Code": 20043,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K01",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -433,7 +433,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Fady Morad Sobhy Mikhail",
       "Email": "fady.morad@evapharma.com",
       "Code": 20027,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K02",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -442,7 +442,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mostafa Elsawy Hamed Ismail",
       "Email": "mostafa.elsawy@evapharma.com",
       "Code": 20045,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K03",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -451,7 +451,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Margret Youssef Mena",
       "Email": "margret.youssef@evapharma.com",
       "Code": 20092,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K04",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -460,7 +460,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Ereeni Gergis Alphonse",
       "Email": "ereeni.gergis@evapharma.com",
       "Code": 20089,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K05",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -469,7 +469,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mariam Mounir Benjamin",
       "Email": "mariam.mounir@evapharma.com",
       "Code": 20149,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K06",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -478,7 +478,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Christeen Sobhy Kamel",
       "Email": "christeen.sobhy@evapharma.com",
       "Code": 20165,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K07",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -487,7 +487,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Walaa Mohamed Abd El-Samad",
       "Email": "walaa.mohamed@evapharma.com",
       "Code": 20213,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K08",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -496,7 +496,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Martha Refaat Shaker",
       "Email": "martha.refaat@evapharma.com",
       "Code": 20255,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K09",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -505,7 +505,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Monica Magdy Yashou",
       "Email": "monica.yashou@evapharma.com",
       "Code": 20273,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K10",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -874,7 +874,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Karam Wadie Nader Attallah",
       "Email": "karam.wadie@evapharma.com",
       "Code": 250809,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K01",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -883,7 +883,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Gehad Mohamed Sayed Zidan",
       "Email": "gehad.mohamed@evapharma.com",
       "Code": 250815,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K02",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -892,7 +892,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Clara Nessim Gerges Eissa",
       "Email": "clara.nessim@evapharma.com",
       "Code": 250824,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K03",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -901,7 +901,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Lydia Hisham Boshra Nashed",
       "Email": "lydia.hisham@evapharma.com",
       "Code": 250822,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K04",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -910,7 +910,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Antonious Gamal Bishay Keryakos",
       "Email": "antonious.gamal@evapharma.com",
       "Code": 250827,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K05",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -919,7 +919,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mina Magdy Nashed Gendy",
       "Email": "mina.m.nashed@evapharma.com",
       "Code": 250829,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K06",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -928,7 +928,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Amr Mostafa Ahmed Gomaa",
       "Email": "amr.mostafa@evapharma.com",
       "Code": 250825,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K07",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -937,7 +937,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Bavly Alyon Nesouhy Beshay",
       "Email": "bavly.alyon@evapharma.com",
       "Code": 250850,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K08",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -946,7 +946,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Youstina Boshra Nathan Moussa",
       "Email": "youstina.boshra@evapharma.com",
       "Code": 250847,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K09",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -955,7 +955,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mathew Nady Adib Matta",
       "Email": "mathew.nady@evapharma.com",
       "Code": 250843,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K10",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1324,7 +1324,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Salma Mohamed Abdelghany Ibrahim",
       "Email": "salma.abdelghany@evapharma.com",
       "Code": 251209,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K01",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1333,7 +1333,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Ann George Fakhry Saleeb",
       "Email": "ann.george@evapharma.com",
       "Code": 251203,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K02",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1342,7 +1342,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Raghad Azmy Abdelaziz Elsaby",
       "Email": "raghad.azmy@evapharma.com",
       "Code": 251294,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K03",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1351,7 +1351,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Monica Saeed Fekry Saleh",
       "Email": "monica.saeed@evapharma.com",
       "Code": 251288,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K04",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1360,7 +1360,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Laila Sayed Mohamed Mogahed",
       "Email": "Laila.Sayed@evapharma.com",
       "Code": 251290,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K05",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1369,7 +1369,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Marvy Medhat Samir Mansour",
       "Email": "marvy.medhat@evapharma.com",
       "Code": 251323,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K06",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1378,7 +1378,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mera Gerges William Thabet",
       "Email": "mera.gerges@evapharma.com",
       "Code": 251339,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K07",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1387,7 +1387,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Reham Hassan Sayed Bayoumy",
       "Email": "reham.hassan@evapharma.com",
       "Code": 251334,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K08",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1396,7 +1396,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Rawda Elsayed Ezzat Soliman",
       "Email": "rawda.elsayed@evapharma.com",
       "Code": 251340,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K09",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1405,7 +1405,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mariam Mikhail Azmy Ishak",
       "Email": "mariam.azmy@evapharma.com",
       "Code": 251344,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K10",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1774,7 +1774,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Basma Hatem Mansour Ibrahim",
       "Email": "Basma.Hatem@evapharma.com",
       "Code": 251519,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K01",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1783,7 +1783,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Khaled Mohamed Kassem Mohamed",
       "Email": "Khaled.Kassem@evapharma.com",
       "Code": 251531,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K02",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1792,7 +1792,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Nashaat Nagy Naguib Shenouda",
       "Email": "Nashaat.Nagy@evapharma.com",
       "Code": 251525,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K03",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1801,7 +1801,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Kirolos Maged Shawky Mosaad",
       "Email": "Kirolos.Maged@evapharma.com",
       "Code": 251541,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K04",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1810,7 +1810,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Khaled Yehia Zakaria Kandil",
       "Email": "Khaled.Zakaria@evapharma.com",
       "Code": 251548,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K05",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1819,7 +1819,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Engy Amr Ahmed Nabil",
       "Email": "Engy.Amr@evapharma.com",
       "Code": 251555,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K06",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1828,7 +1828,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Amira Abdelraouf Abdelrahman Elshamy",
       "Email": "Amira.Abdelraouf@evapharma.com",
       "Code": 251552,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K07",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1837,7 +1837,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Antoine George Wahba Basali",
       "Email": "Antoine.George@evapharma.com",
       "Code": 251549,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K08",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1846,7 +1846,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mohamed Hossam Kotb Khalil",
       "Email": "Mohamed.Kotb@evapharma.com",
       "Code": 251551,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K09",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -1855,7 +1855,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Ahmed Sobhy Mohamed",
       "Email": "ahmed.sobhy@evapharma.com",
       "Code": 5593,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K10",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -2224,7 +2224,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Engy Mostafa Mohamed",
       "Email": "engy.mostafa@evapharma.com",
       "Code": 6165,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K01",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -2233,7 +2233,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mario Hosny Amin",
       "Email": "mario.hosny@evapharma.com",
       "Code": 6137,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K02",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -2242,7 +2242,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mariam Nagy Ibrahem",
       "Email": "mariam.ibrahim@evapharma.com",
       "Code": 6130,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K03",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -2251,7 +2251,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mina Samir Malak",
       "Email": "mena.metaos@evapharma.com",
       "Code": 6142,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K04",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -2260,7 +2260,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Ahmed Mahmoud Ali",
       "Email": "ahmed.montaser@evapharma.com",
       "Code": 6141,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K05",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -2269,7 +2269,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Sara Mohamed Eldesoky",
       "Email": "sara.mohamed@evapharma.com",
       "Code": 6254,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K06",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -2278,7 +2278,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mona Ahmed Kotb",
       "Email": "mona.kotb@evapharma.com",
       "Code": 6256,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K07",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -2287,7 +2287,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mai Mamdouh Hashem",
       "Email": "mai.mamdouh@evapharma.com",
       "Code": 6323,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K08",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -2296,7 +2296,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Marina Emad Karam",
       "Email": "Marina.karam@evapharma.com",
       "Code": 6315,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K09",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
@@ -2305,7 +2305,7 @@ const LOCAL_MEMBERS_DATA = [
       "Name": "Mirette Essam Fawzy",
       "Email": "mirette.essam@evapharma.com",
       "Code": 6358,
-      "Team": "Riddle Solvers",
+      "Team": "Riddles Solvers",
       "Kingdom": "K10",
       "Date": "Tue 13/05",
       "Time": "9 am - 11 am"
