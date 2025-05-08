@@ -1,1 +1,1 @@
-# eva_pharaohs
+# people-of-kemet
