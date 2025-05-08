@@ -1,56 +1,10 @@
+
+
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM fully loaded - Offline Mode');
     initializeAuthSystem();
 });
 
-// Hardcoded member data (replace with your actual members)
-const LOCAL_MEMBERS_DATA = [
-    {
-        "Name": "Peter Ramsis Tawfeek",
-        "Email": "peter.tawfik@evapharma.com",
-        "Code": 4639,
-        "Team": "Builders",
-        "Kingdom": "1",
-        "Date": "07/05",
-        "Time": "10:00 PM"
-    },
-    {
-        "Name": "Maro Peter Ramsis",
-        "Email": "dr.peter.salib@gmail.com",
-        "Code": 1234,
-        "Team": "Strategic Leaders",
-        "Kingdom": "1",
-        "Date": "07/05",
-        "Time": "10:00 PM"
-    },
-    {
-        "Name": "Fiby Magdy Ibrahem",
-        "Email": "fabulla86@gmail.com",
-        "Code": 7896,
-        "Team": "Workers",
-        "Kingdom": "1",
-        "Date": "07/05",
-        "Time": "10:00 PM"
-    },
-    {
-        "Name": "Bassem Rafaat Nagiub",
-        "Email": "basem.nagiub@evapharma.com",
-        "Code": 8524,
-        "Team": "Workers",
-        "Kingdom": "1",
-        "Date": "07/05",
-        "Time": "10:00 PM"
-    },
-    {
-        "Name": "Guest",
-        "Email": "guest@evapharma.com",
-        "Code": 1001,
-        "Team": "Workers",
-        "Kingdom": "1",
-        "Date": "07/05",
-        "Time": "10:00 PM"
-    }
-];
 
 function initializeAuthSystem() {
     const userData = safelyGetUserData();
@@ -317,8 +271,9 @@ function showMainContent() {
 function handleSignOut() {
     console.log('User signing out');
     localStorage.removeItem('userData');
-    showLoginScreen();
+    location.reload(); // This reloads the entire page
 }
+
 
 function removeElement(selector) {
     const element = document.querySelector(selector);

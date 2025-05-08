@@ -96,6 +96,61 @@ document.getElementById("builders-Responsibilities").onclick = function() {
 };
 
 
+/////////  Leaders //////////
+// 1- Leaders-main
+document.getElementById("leaders-main").onclick = function() {
+  showNotifier(`
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        .emphasized {
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Strategic Leaders of the Pharaoh’s Court</h1>
+
+        <p class="emphasized">Esteemed Council Members,</p>
+
+        <p>You are <span class="emphasized">PHARAOH’s</span> most trusted advisors and closest circle of wisdom and vision. While the other guilds shape the land, feed the people, and guard our secrets, it is you who guide the greater path of our empire. You oversee everything — resources, direction, and decisions. The choices you make will shape our future and echo through history.</p>
+
+        <p class="emphasized">The Builders, Farmers, Workers, and Riddle Solvers</p>
+
+        <p>all look to you for guidance. You are responsible for ensuring harmony between them and aligning their efforts under one unified vision.</p>
+    </div>
+
+</body>
+  `);
+  
+};
 
 
 

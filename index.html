@@ -94,24 +94,44 @@
 
 <div id="teamContainer" style="display:none;">
    <!-- Your existing team buttons (Strategic Leaders, Builders, etc.) -->
+
+    <!-- Leaders Menu -->  
    <div style="display:none;" id="Strategic Leaders">
-       <button>Strategic Leaders<span class="new-tab-icon"></span></button>
+    <button id="leaders-main">Leaders Brief<span class="new-tab-icon"></span></button><br>
+    <button id="leaders-Responsibilities">Responsibilities<span class="new-tab-icon"></span></button>
    </div>
+
+
+ <!-- Builders Menu -->  
    <div style="display:none;" id="Builders">
        <button id="builders-main">Builders<span class="new-tab-icon"></span></button><br>
        <button id="builders-Responsibilities">Responsibilities<span class="new-tab-icon"></span></button>
    </div>
+
+
+    <!-- Workers Menu -->  
    <div style="display:none;" id="Workers">
-       <button>Workers<span class="new-tab-icon"></span></button>
+    <button id="workers-main">Workers Brief<span class="new-tab-icon"></span></button><br>
+    <button id="workers-Responsibilities">Responsibilities<span class="new-tab-icon"></span></button>
    </div>
+
+
+    <!-- Farmers Menu -->  
    <div style="display:none;" id="Farmers">
-       <button>Farmers<span class="new-tab-icon"></span></button>
+    <button id="farmers-main">Farmers Brief<span class="new-tab-icon"></span></button><br>
+    <button id="farmers-Responsibilities">Responsibilities<span class="new-tab-icon"></span></button>
    </div>
+
+     <!-- Solvers Menu -->  
    <div style="display:none;" id="Riddles Solvers">
-       <button>Riddles Solvers<span class="new-tab-icon"></span></button>
+    <button id="solvers-main">Solvers Brief<span class="new-tab-icon"></span></button><br>
+    <button id="solvers-Responsibilities">Responsibilities<span class="new-tab-icon"></span></button>
    </div>
+
+     <!-- Default Menu -->  
    <div style="display:none;" id="default">
-       <button>default<span class="new-tab-icon"></span></button>
+    <button id="default-main">Default Brief<span class="new-tab-icon"></span></button><br>
+    <button id="default-Responsibilities">Responsibilities<span class="new-tab-icon"></span></button>
    </div>
 </div>
 <button style="background:#f9db75" onclick="postTrain()">Post Training<span class="new-tab-icon"></span></button>
@@ -199,7 +219,7 @@
 
 </div>
 <div id="popup-overlay" class="popup-overlay" onclick="closePopup(event)"></div>
-    <script src="team-data.js"></script>
+    <script src="teams-list.js"></script>
     <script src="auth.js"></script>
     <script src="content.js"></script>
     <script src="eva.js"></script>
