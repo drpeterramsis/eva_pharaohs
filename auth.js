@@ -54,7 +54,8 @@ function showLoginScreen() {
     const loginHTML = `
         <div class="login-container">
             <div class="login-box">
-                <h2>People of Kemet</h2>
+              <img src="assets/kemet.png" class="logo-main" alt="EVA Logo" />
+                
                 <div class="input-group">
                     <input type="email" id="emailInput" 
                            placeholder="Enter your email" 
