@@ -39,6 +39,7 @@ html, body {
     font-family: 'HN', sans-serif;
     background-color: #000;
     overflow-x: hidden;
+    align-content:center;
 }
 
 /* ====================== */
@@ -94,18 +95,20 @@ html, body {
 /* BANNER STYLES          */
 /* ====================== */
 .banner {
-    position: relative;
-    top: 0;
-    width: 12rem; /* Ensures the banner takes up the full width */
-    max-width: 100%; /* Prevents shrinking */
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw; /* use viewport width to ensure it's 90% of screen */
+    max-width: 90vw; /* prevents any parent constraints */
     z-index: 10;
-    display: flex; /* Changed from 'coloumn' to 'flex' */
+    display: flex;
     justify-content: space-between;
     align-items: center;
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 10px;
+    padding: 0px 20px 2px 3px;
     opacity: 0;
     pointer-events: none;
     transition: all 1s ease;
@@ -113,6 +116,8 @@ html, body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
 }
+
+
 
 
 .notes {
@@ -209,7 +214,7 @@ html, body {
 }
 
 .logo-main {
-    width: 14rem;
+    width: 10rem;
     max-width: 100%;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
     transition: transform 1s ease;
@@ -248,26 +253,38 @@ html, body {
 /* ====================== */
 /* MENU STYLES            */
 /* ====================== */
+/* Initially, set the opacity to 0 */
 .menu {
     position: fixed;
+    bottom: 0; /* Stick to the bottom of the screen */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
     display: flex;
-    flex-direction: column; 
-    align-items: flex-start; /* Keep items to the left */
-    gap: 20px;
-    margin-top: 0.2rem;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-end; /* Align content vertically to the bottom */
+    gap: 20px; /* Space between items */
     font-family: 'HN';
-    top: 0;
-    bottom: 0; /* Extend to the bottom */
-    left: 2rem; /* Keep the menu to the left */
-    right: auto; /* Remove any right positioning */
     z-index: 10;
-    opacity: 0;
-    pointer-events: none;
+    opacity: 0; /* Start with opacity 0 for the fade-in effect */
+    pointer-events: none; /* Initially disable interaction */
     transition: all 1s ease;
-    max-height: 90vh; 
-    overflow-y: auto;
-    justify-content: space-between; /* Distribute items equally along the height */
+    width: 90vw; /* Optional: control width */
+    padding: 0px 0px 50px 0px;
+    /*  background: rgba(255, 255, 255, 0.6); */
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
+    max-height: 90vh; /* Limit height to the view */
 }
+
+/* Fade-in effect */
+.fade-in {
+    opacity: 1; /* Set to fully visible */
+    pointer-events: auto; /* Enable interaction when visible */
+}
+
+
+
 
 
 .menu::-webkit-scrollbar {
@@ -276,17 +293,18 @@ html, body {
 
 
 .menu button {
-    padding: 20px 30px;
-    width: 12rem;
-    font-size: 1.0rem;
-    border: none;
+    padding: 10px 15px;
+    width: auto;
+    font-size: 0.8rem;
+    border: 5px solid white; /* or any thickness and color you like */
+
     background: linear-gradient(135deg, #ffc404 0%, #ffc404 100%);
     color: black;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     position: relative;
     overflow: hidden;
     white-space: nowrap; /* Prevents text from wrapping */
@@ -868,37 +886,44 @@ html, body {
 /* ====================== */
 .pharaoh-container {
   position: fixed;
-  right: 0;
-  bottom: 0;
+  left: 50%; /* Centers the container horizontally */
+  bottom: 0; /* Aligns the container to the bottom */
   z-index: 6;
   width: min(60vw, var(--pharaoh-max-width));
   max-height: 80vh;
   aspect-ratio: 1 / 1.2;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: center; /* Centers the content inside the container */
+  align-items: flex-end; /* Aligns the pharaoh character to the bottom */
   transition: all 0.5s ease;
   pointer-events: none; /* Prevents accidental interaction */
+  transform: translateX(-50%); /* Adjusts for the width of the container to ensure it's centered */
 }
+
 
 .splash.show-menu .pharaoh-container {
     display: block;
 }
 
+
 .pharaoh-character {
+  position: absolute; /* Allows absolute positioning */
+  bottom: 0; /* Aligns it to the bottom of the screen */
+  transform: translateX(-50%); /* Adjusts for the width of the element to ensure it's truly centered */
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: right bottom;
+  object-position: center bottom;
   filter: drop-shadow(var(--pharaoh-shadow));
   opacity: 0;
   animation: float var(--pharaoh-float-duration) ease-in-out infinite;
   transition: 
     opacity 2s ease-in,
     transform 0.3s ease;
-  transform-origin: bottom right;
+  transform-origin: bottom center; /* Ensure it floats from the center bottom */
   will-change: transform, opacity;
 }
+
 
 .pharaoh-character.loaded {
     opacity: 1;
@@ -919,9 +944,7 @@ html, body {
 
 
 @media (max-width: 768px) {
-    .banner {
-        padding: 10px;
-    }
+
 
     .banner .title {
         font-size: 1.3rem;
@@ -954,10 +977,6 @@ html, body {
         font-size: 1.5rem;
     }
 
-      .pharaoh-container {
-    width: 60vw;
-    aspect-ratio: auto; /* Allows natural height */
-  }
 
   .pharaoh-character {
     height: auto;
@@ -989,27 +1008,27 @@ html, body {
 .team-display {
     font-size: 1rem;
     margin: 0;
-    color: #834333;
+    color:  #D2042D;
     /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); */
 }
 .kingdom-display {
     font-size: 1rem;
     margin: 0;
-    color: #834333!important;
+    color: #D2042D !important;
     /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); */
     text-align:right;
 }
 .date-display {
     font-size: 1rem;
     margin: 0;
-    color: #834333 !important;
+    color: darkred !important;
     /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); */
     text-align:right;
 }
 .time-display {
     font-size: 1rem;
     margin: 0;
-    color: #834333!important;
+    color: darkred!important;
     /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); */
     text-align:right;
 }
@@ -1173,4 +1192,24 @@ html, body {
     position: absolute; top: -10px; right: -10px;
     background: #f9db75; border: none;
     border-radius: 50%; font-size: 16px; cursor: pointer;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }
