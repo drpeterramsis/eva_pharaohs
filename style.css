@@ -889,7 +889,7 @@ html, body {
   left: 50%; /* Centers the container horizontally */
   bottom: 0; /* Aligns the container to the bottom */
   z-index: 6;
-  width: min(60vw, var(--pharaoh-max-width));
+  width: min(90vw, var(--pharaoh-max-width));
   max-height: 80vh;
   aspect-ratio: 1 / 1.2;
   display: flex;
