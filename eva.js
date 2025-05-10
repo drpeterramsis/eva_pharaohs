@@ -82,3 +82,77 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+
+ const mapPopup = document.getElementById('mapPopup');
+    const mapImage = document.getElementById('mapImage');
+
+    function map() {
+        mapPopup.style.display = 'flex';
+    }
+
+    function closeMap() {
+        mapPopup.style.display = 'none';
+    }
+
+    // Zoom functionality
+    let scale = 1;
+    let start = { x: 0, y: 0 };
+    let isDragging = false;
+
+    mapImage.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const zoomIntensity = 0.1;
+        scale += (e.deltaY < 0 ? 1 : -1) * zoomIntensity;
+        scale = Math.min(Math.max(1, scale), 5); // Limit zoom between 1x and 5x
+        mapImage.style.transform = `scale(${scale})`;
+    });
+
+    // Drag to pan on zoom
+    mapImage.addEventListener('mousedown', (e) => {
+        if (scale === 1) return;
+        isDragging = true;
+        start = { x: e.clientX, y: e.clientY };
+        mapImage.style.cursor = 'grabbing';
+    });
+
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        let dx = e.clientX - start.x;
+        let dy = e.clientY - start.y;
+        mapImage.style.transform += ` translate(${dx}px, ${dy}px)`;
+        start = { x: e.clientX, y: e.clientY };
+    });
+
+    window.addEventListener('mouseup', () => {
+        isDragging = false;
+        mapImage.style.cursor = 'default';
+    });
+
+    // Touch pinch zoom
+    let initialDistance = 0;
+    let initialScale = 1;
+
+    mapImage.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 2) {
+            e.preventDefault();
+            initialDistance = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            initialScale = scale;
+        }
+    });
+
+    mapImage.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 2) {
+            e.preventDefault();
+            const currentDistance = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            const pinchScale = currentDistance / initialDistance;
+            scale = Math.min(Math.max(1, initialScale * pinchScale), 5);
+            mapImage.style.transform = `scale(${scale})`;
+        }
+    });
