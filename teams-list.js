@@ -88,7 +88,6 @@ const LOCAL_MEMBERS_DATA = [
 
 // all members
 
-
  {
    "Name": "Tamer Refky Nesem Ibrahim",
    "Email": "tamer.refky@evapharma.com",
@@ -2883,8 +2882,8 @@ const LOCAL_MEMBERS_DATA = [
    "Name": "Karim Eid Mohamed",
    "Email": "karim.berzan@evapharma.com",
    "Code": 250185,
-   "Team": "Strategic Leaders",
-   "Kingdom": "K08",
+   "Team": "Riddles Solvers",
+   "Kingdom": "K06",
    "Date": "Tue 13/05",
    "Time": "1 pm - 3 pm",
    "Division": "Cardio"
@@ -3003,8 +3002,8 @@ const LOCAL_MEMBERS_DATA = [
    "Name": "Beshoy Isaac Habib Mikhael",
    "Email": "beshoy.isaac@evapharma.com",
    "Code": 250783,
-   "Team": "Riddles Solvers",
-   "Kingdom": "K06",
+   "Team": "Strategic Leaders",
+   "Kingdom": "K08",
    "Date": "Tue 13/05",
    "Time": "1 pm - 3 pm",
    "Division": "Cardio"
@@ -3763,8 +3762,8 @@ const LOCAL_MEMBERS_DATA = [
    "Name": "Heba Khalaf Ahmed",
    "Email": "heba.khalaf@evapharma.com",
    "Code": 250442,
-   "Team": "Riddles Solvers",
-   "Kingdom": "K06",
+   "Team": "Farmers",
+   "Kingdom": "K04",
    "Date": "Tue 13/05",
    "Time": "1 pm - 3 pm",
    "Division": "Cardio"
@@ -3793,8 +3792,8 @@ const LOCAL_MEMBERS_DATA = [
    "Name": "Marina Raouf Ibrahim",
    "Email": "marina.riad@evapharma.com",
    "Code": 250449,
-   "Team": "Riddles Solvers",
-   "Kingdom": "K06",
+   "Team": "Builders",
+   "Kingdom": "K02",
    "Date": "Tue 13/05",
    "Time": "1 pm - 3 pm",
    "Division": "Cardio"
@@ -4763,8 +4762,8 @@ const LOCAL_MEMBERS_DATA = [
    "Name": "Hossam Nasr Yehia Khalifa",
    "Email": "Hossam.Nasr@evapharma.com",
    "Code": 251516,
-   "Team": "Riddles Solvers",
-   "Kingdom": "K06",
+   "Team": "Farmers",
+   "Kingdom": "K05",
    "Date": "Tue 13/05",
    "Time": "1 pm - 3 pm",
    "Division": "Cardio"
@@ -5043,8 +5042,8 @@ const LOCAL_MEMBERS_DATA = [
    "Name": "Mohamed Abdelfattah Basyoune",
    "Email": "mohamed.ocda@evapharma.com",
    "Code": 5083,
-   "Team": "Farmers",
-   "Kingdom": "K04",
+   "Team": "Riddles Solvers",
+   "Kingdom": "K06",
    "Date": "Tue 13/05",
    "Time": "1 pm - 3 pm",
    "Division": "Cardio"
@@ -5053,8 +5052,8 @@ const LOCAL_MEMBERS_DATA = [
    "Name": "Mina Magdi Shafek",
    "Email": "mina.magdi@evapharma.com",
    "Code": 5156,
-   "Team": "Farmers",
-   "Kingdom": "K05",
+   "Team": "Riddles Solvers",
+   "Kingdom": "K06",
    "Date": "Tue 13/05",
    "Time": "1 pm - 3 pm",
    "Division": "Cardio"
@@ -5123,8 +5122,8 @@ const LOCAL_MEMBERS_DATA = [
    "Name": "Magy Girgis Mikhael",
    "Email": "magy.gerges@evapharma.com",
    "Code": 6082,
-   "Team": "Builders",
-   "Kingdom": "K02",
+   "Team": "Riddles Solvers",
+   "Kingdom": "K06",
    "Date": "Tue 13/05",
    "Time": "1 pm - 3 pm",
    "Division": "Cardio"
