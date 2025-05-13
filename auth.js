@@ -255,7 +255,7 @@ function showMainContent() {
     const footerHTML = `
         <footer class="app-footer">
             <div class="footer-content">
-                <small>@2025 Dr. Peter Ramsis | DCC5 - v1.30.11</small>
+                <small>@2025 Dr. Peter Ramsis | DCC5 - v1.30.15</small>
                 <button id="signOutBtn" class="sign-out-btn">Sign Out</button>
             </div>
         </footer>
