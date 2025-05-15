@@ -5432,8 +5432,8 @@ const LOCAL_MEMBERS_DATA = [
    "Name": "Peter Ramsis Tawfik",
    "Email": "peter.tawfik@evapharma.com",
    "Code": 4639,
-   "Team": "Workers",
-   "Kingdom": "K03",
+   "Team": "Strategic Leaders",
+   "Kingdom": "K01",
    "Date": "Tue 13/05",
    "Time": "1 pm - 3 pm",
    "Division": "Cardio"
